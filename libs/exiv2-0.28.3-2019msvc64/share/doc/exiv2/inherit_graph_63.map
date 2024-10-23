@@ -1,0 +1,33 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$structExiv2_1_1Internal_1_1SliceBase.html" title=" " alt="" coords="5,220,175,247"/>
+<area shape="rect" id="Node000001" href="$structExiv2_1_1Internal_1_1ConstSliceBase.html" title=" " alt="" coords="234,9,452,68"/>
+<area shape="poly" id="edge47_Node000000_Node000001" title=" " alt="" coords="106,205,154,144,186,111,221,82,248,66,251,71,224,86,189,115,158,148,111,208"/>
+<area shape="rect" id="Node000004" href="$structExiv2_1_1Internal_1_1ConstSliceBase.html" title=" " alt="" coords="223,96,463,139"/>
+<area shape="poly" id="edge50_Node000000_Node000004" title=" " alt="" coords="120,208,167,178,222,148,251,137,253,142,224,153,169,182,123,213"/>
+<area shape="rect" id="Node000007" href="$structExiv2_1_1Internal_1_1ConstSliceBase.html" title=" " alt="" coords="239,163,447,221"/>
+<area shape="poly" id="edge53_Node000000_Node000007" title=" " alt="" coords="190,214,238,206,239,212,191,220"/>
+<area shape="rect" id="Node000009" href="$structExiv2_1_1Internal_1_1ConstSliceBase.html" title=" " alt="" coords="234,245,452,304"/>
+<area shape="poly" id="edge55_Node000000_Node000009" title=" " alt="" coords="190,247,234,254,233,259,190,252"/>
+<area shape="rect" id="Node000011" href="$structExiv2_1_1Internal_1_1ConstSliceBase.html" title=" " alt="" coords="223,328,463,371"/>
+<area shape="poly" id="edge57_Node000000_Node000011" title=" " alt="" coords="123,254,169,285,224,314,253,325,251,330,222,318,167,289,120,258"/>
+<area shape="rect" id="Node000014" href="$structExiv2_1_1Internal_1_1ConstSliceBase.html" title="This class provides the public&#45;facing const&#45;qualified methods of a slice." alt="" coords="235,403,450,445"/>
+<area shape="poly" id="edge60_Node000000_Node000014" title=" " alt="" coords="110,258,157,319,189,352,224,380,261,400,259,404,221,385,185,356,153,323,106,261"/>
+<area shape="rect" id="Node000002" href="$structExiv2_1_1Internal_1_1MutableSliceBase.html" title=" " alt="" coords="511,5,708,64"/>
+<area shape="poly" id="edge48_Node000001_Node000002" title=" " alt="" coords="467,34,511,33,511,39,467,39"/>
+<area shape="rect" id="Node000003" href="$structExiv2_1_1Slice.html" title="Slice (= view) for STL containers." alt="" coords="756,21,923,48"/>
+<area shape="poly" id="edge49_Node000002_Node000003" title=" " alt="" coords="724,32,756,32,756,37,724,37"/>
+<area shape="rect" id="Node000005" href="$structExiv2_1_1Internal_1_1MutableSliceBase.html" title=" " alt="" coords="516,88,704,147"/>
+<area shape="poly" id="edge51_Node000004_Node000005" title=" " alt="" coords="478,115,515,115,515,120,478,120"/>
+<area shape="rect" id="Node000006" href="$structExiv2_1_1Slice_3_01T_01_5_01_4.html" title=" " alt="" coords="775,104,904,131"/>
+<area shape="poly" id="edge52_Node000005_Node000006" title=" " alt="" coords="719,115,774,115,774,120,719,120"/>
+<area shape="rect" id="Node000008" href="$structExiv2_1_1Slice_3_01const_01T_01_5_01_4.html" title=" " alt="" coords="543,171,676,213"/>
+<area shape="poly" id="edge54_Node000007_Node000008" title=" " alt="" coords="463,189,542,189,542,195,463,195"/>
+<area shape="rect" id="Node000010" href="$structExiv2_1_1Slice_3_01const_01container_01_4.html" title="Specialization of slices for constant containers." alt="" coords="543,253,676,296"/>
+<area shape="poly" id="edge56_Node000009_Node000010" title=" " alt="" coords="467,272,543,272,543,277,467,277"/>
+<area shape="rect" id="Node000012" href="$structExiv2_1_1Internal_1_1MutableSliceBase.html" title=" " alt="" coords="511,320,708,379"/>
+<area shape="poly" id="edge58_Node000011_Node000012" title=" " alt="" coords="479,347,510,347,510,352,479,352"/>
+<area shape="rect" id="Node000013" href="$structExiv2_1_1Slice.html" title=" " alt="" coords="779,336,900,363"/>
+<area shape="poly" id="edge59_Node000012_Node000013" title=" " alt="" coords="724,347,779,347,779,352,724,352"/>
+<area shape="rect" id="Node000015" href="$structExiv2_1_1Internal_1_1MutableSliceBase.html" title=" " alt="" coords="524,403,695,461"/>
+<area shape="poly" id="edge61_Node000014_Node000015" title=" " alt="" coords="466,425,524,427,524,432,466,430"/>
+</map>

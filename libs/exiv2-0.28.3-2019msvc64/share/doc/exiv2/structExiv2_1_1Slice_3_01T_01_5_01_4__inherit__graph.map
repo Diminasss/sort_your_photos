@@ -1,0 +1,17 @@
+<map id="Exiv2::Slice&lt; T * &gt;" name="Exiv2::Slice&lt; T * &gt;">
+<area shape="rect" id="Node000001" title=" " alt="" coords="1335,74,1465,100"/>
+<area shape="rect" id="Node000002" href="$structExiv2_1_1Internal_1_1MutableSliceBase.html" title=" " alt="" coords="1098,58,1286,116"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1301,84,1335,84,1335,90,1301,90"/>
+<area shape="rect" id="Node000003" href="$structExiv2_1_1Internal_1_1ConstSliceBase.html" title=" " alt="" coords="648,30,889,72"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="904,60,1097,76,1097,82,904,65"/>
+<area shape="rect" id="Node000004" href="$structExiv2_1_1Internal_1_1SliceBase.html" title=" " alt="" coords="5,46,175,72"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="150,39,224,23,336,9,424,3,512,6,625,16,684,26,683,32,624,22,512,11,424,9,336,14,224,28,151,44"/>
+<area shape="rect" id="Node000005" href="$structExiv2_1_1Internal_1_1ConstSliceBase.html" title="This class provides the public&#45;facing const&#45;qualified methods of a slice." alt="" coords="224,38,439,80"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="190,56,224,56,224,62,190,62"/>
+<area shape="rect" id="Node000007" href="$structExiv2_1_1Internal_1_1ConstSliceBase.html" title="This class provides the public&#45;facing const&#45;qualified methods of a slice." alt="" coords="224,104,439,147"/>
+<area shape="poly" id="edge8_Node000007_Node000004" title=" " alt="" coords="157,74,252,101,251,106,155,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="455,54,648,51,648,56,455,59"/>
+<area shape="rect" id="Node000006" href="$structExiv2_1_1Internal_1_1MutableSliceBase.html" title=" " alt="" coords="683,96,854,155"/>
+<area shape="poly" id="edge6_Node000002_Node000006" title=" " alt="" coords="870,124,969,122,1073,112,1097,108,1098,114,1074,118,969,127,870,130"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="455,123,682,123,682,128,455,128"/>
+</map>
