@@ -25,7 +25,7 @@ string GetCameraName(string imagePath) {
     }
     catch (Exiv2::Error& e) {
         string error = e.what();
-        cerr << "Ошибка при работе с изображением: " << error << endl;
+        // cerr << "Ошибка при работе с изображением: " << error << endl;
         string error_return = "Error " + error;
         return error_return;
     }
@@ -34,8 +34,7 @@ int main() {
     
     SetConsoleOutputCP(1251);
     SetConsoleCP(1251);
-    std::string imagePath = "C:\\TestPhotos\\IMG_20240227_155733.jpg";
-    vector<string> paths = { "C:\\Users\\johnworker\\Pictures\\Screenshots\\Снимок экрана (29).png", "C:\\Users\\johnworker\\Desktop\\Проекты C++\\Sort your photos\\TestPhotos\\IMG_20240227_155733.jpg", "C:\\Users\\johnworker\\Desktop\\Проекты C++\\Sort your photos\\TestPhotos\\IMG_20240227_201904.jpg", "C:\\Users\\johnworker\\Desktop\\Проекты C++\\Sort your photos\\TestPhotos\\IMG_20241022_185408.jpg" };
+    vector<string> paths = { "C:\\Users\\johnworker\\Desktop\\Проекты C++\\Sort your photos\\TestPhotos\\Screenshot.png", "C:\\Users\\johnworker\\Desktop\\Проекты C++\\Sort your photos\\TestPhotos\\IMG_20240227_155733.jpg", "C:\\Users\\johnworker\\Desktop\\Проекты C++\\Sort your photos\\TestPhotos\\IMG_20240227_201904.jpg", "C:\\Users\\johnworker\\Desktop\\Проекты C++\\Sort your photos\\TestPhotos\\IMG_20241022_185408.jpg", "C:\\Users", "C:\\Users\\johnworker\\Desktop\\Проекты C++\\Sort your photos\\TestPhotos\\20230204_171234.dng", "C:\\Users\\johnworker\\Desktop\\Проекты C++\\Sort your photos\\TestPhotos\\Лаб2.xlsx" };
     for (string x: paths) {
         cout << GetCameraName(x) << endl;
     }
