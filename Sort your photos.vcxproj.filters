@@ -13,10 +13,63 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Исходные файлы\ProgramFiles">
+      <UniqueIdentifier>{929bddf8-1437-4395-9a92-64eb9444ba2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\ProgramFiles\CommonFunctions">
+      <UniqueIdentifier>{1866dc5a-e488-4ed3-a964-1f267eb06f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\ProgramFiles\GetPhotosParameters">
+      <UniqueIdentifier>{925a4e98-1a46-452b-bab3-abc8deb1ff46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\CommonFunctions">
+      <UniqueIdentifier>{7aa8197f-203c-4ebd-a128-acd38968cf37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\GetPhotosParameters">
+      <UniqueIdentifier>{fe36cc1d-35af-4060-b223-48d503c9df81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\ProgramFiles\SortPhotosAlgorithms">
+      <UniqueIdentifier>{5bfdedd3-5dc3-4181-bba7-0c91d7123225}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\SortPhotosAlgorithms">
+      <UniqueIdentifier>{79dd3596-0dd6-4549-9d97-3dd274829a88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Sort your photos.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="ProgramFiles\CommonFunctions\SanitizeFolderName.cpp">
+      <Filter>Исходные файлы\ProgramFiles\CommonFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\CommonFunctions\IsImageFile.cpp">
+      <Filter>Исходные файлы\ProgramFiles\CommonFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\GetPhotosParameters\GetCameraName.cpp">
+      <Filter>Исходные файлы\ProgramFiles\GetPhotosParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\GetPhotosParameters\GetDateOfPhoto.cpp">
+      <Filter>Исходные файлы\ProgramFiles\GetPhotosParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.cpp">
+      <Filter>Исходные файлы\ProgramFiles\SortPhotosAlgorithms</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ProgramFiles\CommonFunctions\IsImageFile.h">
+      <Filter>Файлы заголовков\CommonFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\CommonFunctions\SanitizeFolderName.h">
+      <Filter>Файлы заголовков\CommonFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\GetPhotosParameters\GetCameraName.h">
+      <Filter>Файлы заголовков\GetPhotosParameters</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\GetPhotosParameters\GetDateOfPhoto.h">
+      <Filter>Файлы заголовков\GetPhotosParameters</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.h">
+      <Filter>Файлы заголовков\SortPhotosAlgorithms</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

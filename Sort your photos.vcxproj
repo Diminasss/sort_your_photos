@@ -136,7 +136,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Sort your photos.cpp" />
+    <ClCompile Include="ProgramFiles\CommonFunctions\IsImageFile.cpp" />
+    <ClCompile Include="ProgramFiles\CommonFunctions\SanitizeFolderName.cpp" />
+    <ClCompile Include="ProgramFiles\GetPhotosParameters\GetCameraName.cpp" />
+    <ClCompile Include="ProgramFiles\GetPhotosParameters\GetDateOfPhoto.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ProgramFiles\CommonFunctions\IsImageFile.h" />
+    <ClInclude Include="ProgramFiles\CommonFunctions\SanitizeFolderName.h" />
+    <ClInclude Include="ProgramFiles\GetPhotosParameters\GetCameraName.h" />
+    <ClInclude Include="ProgramFiles\GetPhotosParameters\GetDateOfPhoto.h" />
+    <ClInclude Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
