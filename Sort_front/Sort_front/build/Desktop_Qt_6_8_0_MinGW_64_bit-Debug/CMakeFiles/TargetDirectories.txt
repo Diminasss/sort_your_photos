@@ -1,9 +1,0 @@
-C:/Users/nensi/Documents/SUAI/Course3/Sort_your_photos/Sort_front/Sort_front/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/Sort_front.dir
-C:/Users/nensi/Documents/SUAI/Course3/Sort_your_photos/Sort_front/Sort_front/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-C:/Users/nensi/Documents/SUAI/Course3/Sort_your_photos/Sort_front/Sort_front/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-C:/Users/nensi/Documents/SUAI/Course3/Sort_your_photos/Sort_front/Sort_front/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
-C:/Users/nensi/Documents/SUAI/Course3/Sort_your_photos/Sort_front/Sort_front/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/install.dir
-C:/Users/nensi/Documents/SUAI/Course3/Sort_your_photos/Sort_front/Sort_front/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
-C:/Users/nensi/Documents/SUAI/Course3/Sort_your_photos/Sort_front/Sort_front/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
-C:/Users/nensi/Documents/SUAI/Course3/Sort_your_photos/Sort_front/Sort_front/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/Sort_front_autogen_timestamp_deps.dir
-C:/Users/nensi/Documents/SUAI/Course3/Sort_your_photos/Sort_front/Sort_front/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/CMakeFiles/Sort_front_autogen.dir
