@@ -1,4 +1,4 @@
 #pragma once
 #include <string>
 
-std::string GetCameraName(std::string& imagePath);
+std::string GetCameraName(const std::string& imagePath);

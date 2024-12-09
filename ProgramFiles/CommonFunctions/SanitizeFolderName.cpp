@@ -5,7 +5,7 @@ std::string sanitizeFolderName(const std::string& name) {
     std::string sanitized = name;
     // Список символов, которые нельзя использовать в именах файлов/папок в Windows
     std::string invalidChars = "\\/:*?\"<>|";
-
+    
     // Заменяем все недопустимые символы на подчеркивания
     for (char& c : sanitized) {
         if (invalidChars.find(c) != std::string::npos) {
