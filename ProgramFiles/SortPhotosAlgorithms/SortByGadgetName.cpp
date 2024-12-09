@@ -5,11 +5,11 @@
 #include "../GetPhotosParameters/GetCameraName.h"
 
 #include <iostream>
-
 #include <filesystem>
 #include <thread>
 #include <vector>
 #include <mutex>
+#include <openssl/sha.h>
 
 namespace fs = std::filesystem;
 
