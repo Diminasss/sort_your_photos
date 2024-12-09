@@ -75,13 +75,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 62,
+				"line" : 63,
 				"parent" : 0
 			},
 			{
 				"command" : 5,
 				"file" : 1,
-				"line" : 45,
+				"line" : 46,
 				"parent" : 0
 			},
 			{
@@ -371,11 +371,11 @@
 	"dependencies" : 
 	[
 		{
-			"id" : "frontend_sort_photo_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
-		},
-		{
 			"backtrace" : 0,
 			"id" : "frontend_sort_photo_autogen::@6890427a1f51a3e7e1df"
+		},
+		{
+			"id" : "frontend_sort_photo_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "frontend_sort_photo::@6890427a1f51a3e7e1df",
@@ -495,7 +495,8 @@
 			"sourceIndexes" : 
 			[
 				3,
-				5
+				5,
+				6
 			]
 		},
 		{
@@ -503,14 +504,14 @@
 			"sourceIndexes" : 
 			[
 				4,
-				6
+				7
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				7
+				8
 			]
 		}
 	],
@@ -544,6 +545,11 @@
 			"backtrace" : 4,
 			"path" : "mainwindow.ui",
 			"sourceGroupIndex" : 2
+		},
+		{
+			"backtrace" : 4,
+			"path" : "sortingwidget.h",
+			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
