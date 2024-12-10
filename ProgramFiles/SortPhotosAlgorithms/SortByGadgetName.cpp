@@ -11,7 +11,7 @@
 namespace fs = std::filesystem;
 
 // ћьютекс дл€ синхронизации вывода (если нужно логировать работу потоков)
-std::mutex coutMutex;
+
 
 
 void processFilesWithDevice(
@@ -19,6 +19,7 @@ void processFilesWithDevice(
     const fs::path& targetDirectory,
     std::unordered_map<std::string, int>& hashMap
 ) {
+    std::mutex coutMutex;
     static std::mutex hashMapMutex; // ћьютекс дл€ защиты hashMap
 
     for (const auto& filePath : files) {
