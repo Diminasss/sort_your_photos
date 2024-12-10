@@ -135,6 +135,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ProgramFiles\CommonFunctions\computeFileHash.cpp" />
+    <ClCompile Include="ProgramFiles\CommonFunctions\getUniquePath.cpp" />
     <ClCompile Include="ProgramFiles\CommonFunctions\IsImageFile.cpp" />
     <ClCompile Include="ProgramFiles\CommonFunctions\SanitizeFolderName.cpp" />
     <ClCompile Include="ProgramFiles\GetPhotosParameters\GetCameraName.cpp" />
@@ -143,6 +145,8 @@
     <ClCompile Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ProgramFiles\CommonFunctions\computeFileHash.h" />
+    <ClInclude Include="ProgramFiles\CommonFunctions\getUniquePath.h" />
     <ClInclude Include="ProgramFiles\CommonFunctions\IsImageFile.h" />
     <ClInclude Include="ProgramFiles\CommonFunctions\SanitizeFolderName.h" />
     <ClInclude Include="ProgramFiles\GetPhotosParameters\GetCameraName.h" />

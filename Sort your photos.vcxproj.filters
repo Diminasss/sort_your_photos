@@ -54,6 +54,12 @@
     <ClCompile Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.cpp">
       <Filter>Исходные файлы\ProgramFiles\SortPhotosAlgorithms</Filter>
     </ClCompile>
+    <ClCompile Include="ProgramFiles\CommonFunctions\computeFileHash.cpp">
+      <Filter>Исходные файлы\ProgramFiles\CommonFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\CommonFunctions\getUniquePath.cpp">
+      <Filter>Исходные файлы\ProgramFiles\CommonFunctions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ProgramFiles\CommonFunctions\IsImageFile.h">
@@ -70,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.h">
       <Filter>Файлы заголовков\SortPhotosAlgorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\CommonFunctions\computeFileHash.h">
+      <Filter>Файлы заголовков\CommonFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\CommonFunctions\getUniquePath.h">
+      <Filter>Файлы заголовков\CommonFunctions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
