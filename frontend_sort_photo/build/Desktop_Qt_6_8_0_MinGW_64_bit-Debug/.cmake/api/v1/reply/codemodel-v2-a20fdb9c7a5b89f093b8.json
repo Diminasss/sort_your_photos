@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-7177fe09c775e9addc93.json",
+					"jsonFile" : "directory-.-Debug-94ffc9f23e83dee281b7.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.16"
@@ -44,7 +44,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "frontend_sort_photo::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-frontend_sort_photo-Debug-549ea505ab4ab9dbecef.json",
+					"jsonFile" : "target-frontend_sort_photo-Debug-4341f0341cf18a434946.json",
 					"name" : "frontend_sort_photo",
 					"projectIndex" : 0
 				},

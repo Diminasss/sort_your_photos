@@ -51,7 +51,7 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     QLabel *pathLabel2 = new QLabel("Укажите путь к папке, в которую будут размещены отсортированные фото:", this);
     pathLabel2->setStyleSheet("font-size: 14px; color: black;");
 
-    QLineEdit *pathEdit2 = new QLineEdit(this);
+    pathEdit2 = new QLineEdit(this);
     pathEdit2->setPlaceholderText("Выберите путь...");
     pathEdit2->setStyleSheet("background-color: white; padding: 5px; color: blue");
 
@@ -100,10 +100,10 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     mainLayout->setContentsMargins(20, 20, 20, 20);
     mainLayout->setSpacing(15);
 
-    progressBar = new QProgressBar(this);
-    progressBar->setRange(0, 100);  // Устанавливаем диапазон значений прогресс-бара
-    progressBar->setValue(0);  // Начальное значение
-    mainLayout->addWidget(progressBar);  // Добавляем прогресс-бар в основной layout
+    // progressBar = new QProgressBar(this);
+    // progressBar->setRange(0, 100);  // Устанавливаем диапазон значений прогресс-бара
+    // progressBar->setValue(0);  // Начальное значение
+    // mainLayout->addWidget(progressBar);  // Добавляем прогресс-бар в основной layout
 }
 
 
@@ -130,11 +130,11 @@ void MainWindow::browseForTargetFolder() {
 }
 
 
-void MainWindow::updateProgressBar(int value) {
-    if (progressBar) {
-        progressBar->setValue(value);  // Устанавливаем значение прогресс-бара
-    }
-}
+// void MainWindow::updateProgressBar(int value) {
+//     if (progressBar) {
+//         progressBar->setValue(value);  // Устанавливаем значение прогресс-бара
+//     }
+// }
 
 void MainWindow::openLoadingWindow() {
     if (!loadingWidget) {
