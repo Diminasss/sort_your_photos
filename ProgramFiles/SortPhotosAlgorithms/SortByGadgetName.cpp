@@ -2,9 +2,10 @@
 
 #include "../CommonFunctions/IsImageFile.h"
 #include "../CommonFunctions/SanitizeFolderName.h"
-#include "../GetPhotosParameters/GetCameraName.h"
 #include "../CommonFunctions/computeFileHash.h"
 #include "../CommonFunctions/getUniquePath.h"
+
+#include "../GetPhotosParameters/GetCameraName.h"
 
 
 namespace fs = std::filesystem;

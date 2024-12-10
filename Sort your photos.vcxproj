@@ -140,9 +140,10 @@
     <ClCompile Include="ProgramFiles\CommonFunctions\IsImageFile.cpp" />
     <ClCompile Include="ProgramFiles\CommonFunctions\SanitizeFolderName.cpp" />
     <ClCompile Include="ProgramFiles\GetPhotosParameters\GetCameraName.cpp" />
-    <ClCompile Include="ProgramFiles\GetPhotosParameters\GetDateOfPhoto.cpp" />
+    <ClCompile Include="ProgramFiles\GetPhotosParameters\GetYearOfPhoto.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.cpp" />
+    <ClCompile Include="ProgramFiles\SortPhotosAlgorithms\SortByYear.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ProgramFiles\CommonFunctions\computeFileHash.h" />
@@ -150,8 +151,9 @@
     <ClInclude Include="ProgramFiles\CommonFunctions\IsImageFile.h" />
     <ClInclude Include="ProgramFiles\CommonFunctions\SanitizeFolderName.h" />
     <ClInclude Include="ProgramFiles\GetPhotosParameters\GetCameraName.h" />
-    <ClInclude Include="ProgramFiles\GetPhotosParameters\GetDateOfPhoto.h" />
+    <ClInclude Include="ProgramFiles\GetPhotosParameters\GetYearOfPhoto.h" />
     <ClInclude Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.h" />
+    <ClInclude Include="ProgramFiles\SortPhotosAlgorithms\SortByYear.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

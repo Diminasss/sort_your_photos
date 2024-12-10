@@ -48,7 +48,7 @@
     <ClCompile Include="ProgramFiles\GetPhotosParameters\GetCameraName.cpp">
       <Filter>Исходные файлы\ProgramFiles\GetPhotosParameters</Filter>
     </ClCompile>
-    <ClCompile Include="ProgramFiles\GetPhotosParameters\GetDateOfPhoto.cpp">
+    <ClCompile Include="ProgramFiles\GetPhotosParameters\GetYearOfPhoto.cpp">
       <Filter>Исходные файлы\ProgramFiles\GetPhotosParameters</Filter>
     </ClCompile>
     <ClCompile Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.cpp">
@@ -59,6 +59,9 @@
     </ClCompile>
     <ClCompile Include="ProgramFiles\CommonFunctions\getUniquePath.cpp">
       <Filter>Исходные файлы\ProgramFiles\CommonFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\SortPhotosAlgorithms\SortByYear.cpp">
+      <Filter>Исходные файлы\ProgramFiles\SortPhotosAlgorithms</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,7 +74,7 @@
     <ClInclude Include="ProgramFiles\GetPhotosParameters\GetCameraName.h">
       <Filter>Файлы заголовков\GetPhotosParameters</Filter>
     </ClInclude>
-    <ClInclude Include="ProgramFiles\GetPhotosParameters\GetDateOfPhoto.h">
+    <ClInclude Include="ProgramFiles\GetPhotosParameters\GetYearOfPhoto.h">
       <Filter>Файлы заголовков\GetPhotosParameters</Filter>
     </ClInclude>
     <ClInclude Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.h">
@@ -82,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="ProgramFiles\CommonFunctions\getUniquePath.h">
       <Filter>Файлы заголовков\CommonFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\SortPhotosAlgorithms\SortByYear.h">
+      <Filter>Файлы заголовков\SortPhotosAlgorithms</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
