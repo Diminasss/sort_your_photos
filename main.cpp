@@ -33,8 +33,8 @@ int main() {
     // Запуск обработки файлов
     //SortPhotosByGadgetName(sourceDirectory, targetDirectory);
     auto startTime = std::chrono::high_resolution_clock::now();
-    SortByYearParallel(sourceDirectory, targetDirectory);
-    // SortPhotosByGadgetNameParallel(sourceDirectory, targetDirectory);
+    // SortByYearParallel(sourceDirectory, targetDirectory);
+    SortPhotosByGadgetNameParallel(sourceDirectory, targetDirectory);
     auto endTime = std::chrono::high_resolution_clock::now();
 
     // Вычисляем разницу во времени в секундах
