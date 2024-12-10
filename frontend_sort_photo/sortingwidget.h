@@ -10,6 +10,10 @@ class SortingWidget : public QWidget {
 
 public:
     explicit SortingWidget(QWidget *parent = nullptr);
+    void startSorting();
+
+// private:
+//     void startSorting();
 };
 
 #endif // SORTINGWIDGET_H

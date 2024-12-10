@@ -11,8 +11,10 @@
 #include <QHBoxLayout>
 #include <QRadioButton>
 #include <QButtonGroup>
+#include <QProgressBar>  // Для прогресс-бара
 
 #include "sortingwidget.h"
+#include "loadingwidget.h"
 
 // namespace Ui {
 // class MainWindow;
@@ -29,9 +31,13 @@ public:
 
 
 private slots:
-    void browseForFolder(); // Слот для обработки выбора папки
-
+    //void browseForFolder(); // Слот для обработки выбора папки
+    void browseForSourceFolder();
+    void browseForTargetFolder();
     void openSortingWindow(); // Слот для открытия нового окна
+    void openLoadingWindow();  // Новый слот для открытия окна с загрузкой
+    void updateProgressBar(int value);
+    //void updateProgressBar(int value);  // Обновление прогресс-бара
 
 
 private:
@@ -44,41 +50,13 @@ private:
     QPushButton *nextButton;  // Кнопка "Далее"
     SortingWidget *sortingWidget; // Указатель на новое окно
 
+    LoadingWidget *loadingWidget;  // Указатель на окно загрузки
+    QProgressBar *progressBar;  // Прогресс-бар для отображения загрузки
+    QPushButton *continueButton;  // Кнопка для продолжения после загрузки
+
     //Ui::MainWindow *ui;
 
 };
 
 
 #endif // SORT_FRONT_H
-
-// #ifndef MAINWINDOW_H
-// #define MAINWINDOW_H
-
-// #include <QMainWindow>
-// #include <sortingwidget.h>
-
-// namespace Ui {
-// class MainWindow;
-// }
-
-// class MainWindow : public QMainWindow
-// {
-//     Q_OBJECT
-
-// public:
-//     explicit MainWindow(QWidget *parent = 0);
-//     ~MainWindow();
-
-// private slots:
-//     // Слоты от кнопок главного окна
-//     void on_pushButton_clicked();
-//     void on_pushButton_2_clicked();
-
-// private:
-//     Ui::MainWindow *ui;
-//     // второе и третье окна
-//     AnotherWindow *nextButton;
-//     AnotherWindow *thirdWindow;
-// };
-
-// #endif // MAINWINDOW_H

@@ -1,15 +1,16 @@
 #include "mainwindow.h"
 #include "sortingwidget.h"
+#include "loadingwidget.h"
 
 #include <QPalette>
 #include <QLinearGradient>
 #include <QFileDialog>
 #include <QDebug> // Для отладочного вывода
 
-MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullptr) {
+MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullptr), loadingWidget(nullptr) {
     // Установка заголовка окна
     setWindowTitle("FileSend");
-
+    setFixedSize(800, 500);
 
     // Настройка цвета и градиента фона
     QPalette palette;
@@ -35,12 +36,13 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     pathLabel1->setStyleSheet("font-size: 14px; color: black;");
 
     pathEdit1 = new QLineEdit(this);
+    //QLineEdit *pathEdit1 = new QLineEdit(this);
     pathEdit1->setPlaceholderText("Выберите путь...");
     pathEdit1->setStyleSheet("background-color: white; padding: 5px; color: purple");
 
     QPushButton *browseButton1 = new QPushButton("Обзор...", this);
     browseButton1->setStyleSheet("background-color: #cc66cc; color: white; padding: 5px;");
-    connect(browseButton1, &QPushButton::clicked, this, &MainWindow::browseForFolder);
+    connect(browseButton1, &QPushButton::clicked, this, &MainWindow::browseForSourceFolder);
 
     QHBoxLayout *pathLayout1 = new QHBoxLayout;
     pathLayout1->addWidget(pathEdit1);
@@ -53,8 +55,14 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     pathEdit2->setPlaceholderText("Выберите путь...");
     pathEdit2->setStyleSheet("background-color: white; padding: 5px; color: blue");
 
+    QPushButton *browseButton2 = new QPushButton("Обзор...", this);
+    browseButton2->setStyleSheet("background-color: #cc66cc; color: white; padding: 5px;");
+    connect(browseButton2, &QPushButton::clicked, this, &MainWindow::browseForTargetFolder);
+
     QHBoxLayout *pathLayout2 = new QHBoxLayout;
     pathLayout2->addWidget(pathEdit2);
+    pathLayout2->addWidget(browseButton2);
+
 
     mainLayout->addWidget(titleLabel);
     mainLayout->addWidget(subtitleLabel);
@@ -63,6 +71,8 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     mainLayout->addWidget(pathLabel2);
     mainLayout->addLayout(pathLayout2);
 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
     sortByNameRadio = new QRadioButton("Сортировка фото по названию телефона", this);
     sortByDateRadio = new QRadioButton("Сортировка фото по датам", this);
     sortByNameRadio->setStyleSheet("font-size: 14px; color: black;");
@@ -76,34 +86,66 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     mainLayout->addWidget(sortByNameRadio);
     mainLayout->addWidget(sortByDateRadio);
 
-    nextButton = new QPushButton("Сортировать", this);
+    nextButton = new QPushButton("Начать сортировку", this);
     nextButton->setStyleSheet("background-color: #008CBA; color: white; font-size: 16px; padding: 10px;");
     //connect(nextButton, SIGNAL(clicked()), this, SLOT(openSortingWindow()));
-    connect(nextButton, &QPushButton::clicked, this, &MainWindow::openSortingWindow);
+    connect(nextButton, &QPushButton::clicked, this, &MainWindow::openLoadingWindow);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->addStretch();
     buttonLayout->addWidget(nextButton);
     mainLayout->addLayout(buttonLayout);
 
-    setFixedSize(800, 500);
+
     mainLayout->setContentsMargins(20, 20, 20, 20);
     mainLayout->setSpacing(15);
 
-    // ui->setupUi(this);
-    // // Инициализируем второе окно
-    // sortingWidget = new SortingWidget();
-    // // подключаем к слоту запуска главного окна по кнопке во втором окне
-    // connect(nextButton, &SortingWidget::firstWindow, this, &MainWindow::show);
+    progressBar = new QProgressBar(this);
+    progressBar->setRange(0, 100);  // Устанавливаем диапазон значений прогресс-бара
+    progressBar->setValue(0);  // Начальное значение
+    mainLayout->addWidget(progressBar);  // Добавляем прогресс-бар в основной layout
 }
 
 
-void MainWindow ::browseForFolder() {
-    QString folderPath = QFileDialog::getExistingDirectory(this, "Выберите папку", "");
+// void MainWindow::browseForFolder() {
+//     QString folderPath = QFileDialog::getExistingDirectory(this, "Выберите папку", "");
+//     if (!folderPath.isEmpty()) {
+//         pathEdit1->setText(folderPath);  // Устанавливаем путь в первое поле
+//         //pathEdit2->setText(folderPath);  // Устанавливаем путь во второе поле
+//     }
+// }
+
+void MainWindow::browseForSourceFolder() {
+    QString folderPath = QFileDialog::getExistingDirectory(this, "Выберите исходную папку", "");
     if (!folderPath.isEmpty()) {
         pathEdit1->setText(folderPath);
     }
 }
+
+void MainWindow::browseForTargetFolder() {
+    QString folderPath = QFileDialog::getExistingDirectory(this, "Выберите целевую папку", "");
+    if (!folderPath.isEmpty()) {
+        pathEdit2->setText(folderPath);
+    }
+}
+
+
+void MainWindow::updateProgressBar(int value) {
+    if (progressBar) {
+        progressBar->setValue(value);  // Устанавливаем значение прогресс-бара
+    }
+}
+
+void MainWindow::openLoadingWindow() {
+    if (!loadingWidget) {
+        loadingWidget = new LoadingWidget();
+        connect(loadingWidget, &LoadingWidget::nextWindowRequested, this, &MainWindow::openSortingWindow);
+    }
+    loadingWidget->show();
+    this->hide();  // Скрываем главное окно
+}
+
+
 
 void MainWindow::openSortingWindow() {
     if (!sortingWidget) {

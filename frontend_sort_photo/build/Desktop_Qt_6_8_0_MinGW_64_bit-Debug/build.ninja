@@ -81,6 +81,14 @@ build CMakeFiles/frontend_sort_photo.dir/sortingwidget.cpp.obj: CXX_COMPILER__fr
   OBJECT_DIR = CMakeFiles\frontend_sort_photo.dir
   OBJECT_FILE_DIR = CMakeFiles\frontend_sort_photo.dir
 
+build CMakeFiles/frontend_sort_photo.dir/loadingwidget.cpp.obj: CXX_COMPILER__frontend_sort_photo_unscanned_Debug C$:/Users/nensi/Documents/SUAI/Course3/sort_your_photos/frontend_sort_photo/loadingwidget.cpp || cmake_object_order_depends_target_frontend_sort_photo
+  DEFINES = -DMINGW_HAS_SECURE_API=1 -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NEEDS_QMAIN -DQT_WIDGETS_LIB -DUNICODE -DWIN32 -DWIN64 -D_ENABLE_EXTENDED_ALIGNED_STORAGE -D_UNICODE -D_WIN64
+  DEP_FILE = CMakeFiles\frontend_sort_photo.dir\loadingwidget.cpp.obj.d
+  FLAGS = -DQT_QML_DEBUG -g -std=gnu++17 -fdiagnostics-color=always
+  INCLUDES = -IC:/Users/nensi/Documents/SUAI/Course3/sort_your_photos/frontend_sort_photo/build/Desktop_Qt_6_8_0_MinGW_64_bit-Debug/frontend_sort_photo_autogen/include -isystem C:/Qt/6.8.0/mingw_64/include/QtCore -isystem C:/Qt/6.8.0/mingw_64/include -isystem C:/Qt/6.8.0/mingw_64/mkspecs/win32-g++ -isystem C:/Qt/6.8.0/mingw_64/include/QtWidgets -isystem C:/Qt/6.8.0/mingw_64/include/QtGui
+  OBJECT_DIR = CMakeFiles\frontend_sort_photo.dir
+  OBJECT_FILE_DIR = CMakeFiles\frontend_sort_photo.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target frontend_sort_photo
@@ -89,7 +97,7 @@ build CMakeFiles/frontend_sort_photo.dir/sortingwidget.cpp.obj: CXX_COMPILER__fr
 #############################################
 # Link the executable frontend_sort_photo.exe
 
-build frontend_sort_photo.exe: CXX_EXECUTABLE_LINKER__frontend_sort_photo_Debug CMakeFiles/frontend_sort_photo.dir/frontend_sort_photo_autogen/mocs_compilation.cpp.obj CMakeFiles/frontend_sort_photo.dir/main.cpp.obj CMakeFiles/frontend_sort_photo.dir/mainwindow.cpp.obj CMakeFiles/frontend_sort_photo.dir/sortingwidget.cpp.obj | C$:/Qt/6.8.0/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.8.0/mingw_64/lib/libQt6Gui.a C$:/Qt/6.8.0/mingw_64/lib/libQt6Core.a C$:/Qt/6.8.0/mingw_64/lib/libQt6EntryPoint.a || frontend_sort_photo_autogen frontend_sort_photo_autogen_timestamp_deps
+build frontend_sort_photo.exe: CXX_EXECUTABLE_LINKER__frontend_sort_photo_Debug CMakeFiles/frontend_sort_photo.dir/frontend_sort_photo_autogen/mocs_compilation.cpp.obj CMakeFiles/frontend_sort_photo.dir/main.cpp.obj CMakeFiles/frontend_sort_photo.dir/mainwindow.cpp.obj CMakeFiles/frontend_sort_photo.dir/sortingwidget.cpp.obj CMakeFiles/frontend_sort_photo.dir/loadingwidget.cpp.obj | C$:/Qt/6.8.0/mingw_64/lib/libQt6Widgets.a C$:/Qt/6.8.0/mingw_64/lib/libQt6Gui.a C$:/Qt/6.8.0/mingw_64/lib/libQt6Core.a C$:/Qt/6.8.0/mingw_64/lib/libQt6EntryPoint.a || frontend_sort_photo_autogen frontend_sort_photo_autogen_timestamp_deps
   FLAGS = -DQT_QML_DEBUG -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = C:/Qt/6.8.0/mingw_64/lib/libQt6Widgets.a  C:/Qt/6.8.0/mingw_64/lib/libQt6Gui.a  C:/Qt/6.8.0/mingw_64/lib/libQt6Core.a  -lmpr  -luserenv  -lmingw32  C:/Qt/6.8.0/mingw_64/lib/libQt6EntryPoint.a  -lshell32  -ld3d11  -ldxgi  -ldxguid  -ld3d12  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32

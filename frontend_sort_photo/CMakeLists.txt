@@ -25,6 +25,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         sortingwidget.h
         sortingwidget.cpp
+        loadingwidget.h loadingwidget.cpp
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET frontend_sort_photo APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
