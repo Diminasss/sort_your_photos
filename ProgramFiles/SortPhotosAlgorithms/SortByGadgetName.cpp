@@ -1,4 +1,4 @@
-#include "SortByGadgetName.h"
+п»ї#include "SortByGadgetName.h"
 
 #include "../CommonFunctions/IsImageFile.h"
 #include "../CommonFunctions/SanitizeFolderName.h"
@@ -10,7 +10,7 @@
 
 namespace fs = std::filesystem;
 
-// Мьютекс для синхронизации вывода (если нужно логировать работу потоков)
+// РњСЊСЋС‚РµРєСЃ РґР»СЏ СЃРёРЅС…СЂРѕРЅРёР·Р°С†РёРё РІС‹РІРѕРґР° (РµСЃР»Рё РЅСѓР¶РЅРѕ Р»РѕРіРёСЂРѕРІР°С‚СЊ СЂР°Р±РѕС‚Сѓ РїРѕС‚РѕРєРѕРІ)
 
 
 
@@ -20,19 +20,19 @@ void processFilesWithDevice(
     std::unordered_map<std::string, int>& hashMap
 ) {
     std::mutex coutMutex;
-    static std::mutex hashMapMutex; // Мьютекс для защиты hashMap
+    static std::mutex hashMapMutex; // РњСЊСЋС‚РµРєСЃ РґР»СЏ Р·Р°С‰РёС‚С‹ hashMap
 
     for (const auto& filePath : files) {
         try {
-            // Считаем хеш файла
+            // РЎС‡РёС‚Р°РµРј С…РµС€ С„Р°Р№Р»Р°
             std::string fileHash = computeFileHash(filePath);
 
             if (isImageFile(filePath)) {
-                // Является картинкой
+                // РЇРІР»СЏРµС‚СЃСЏ РєР°СЂС‚РёРЅРєРѕР№
                 std::string cameraName = GetCameraName(filePath.string());
 
                 if (cameraName != "NoExifData" && cameraName != "Error") {
-                    // Имеет Exif данные
+                    // РРјРµРµС‚ Exif РґР°РЅРЅС‹Рµ
                     std::string sanitizedCameraName = sanitizeFolderName(cameraName);
 
                     fs::path newDir = targetDirectory / sanitizedCameraName;
@@ -41,9 +41,9 @@ void processFilesWithDevice(
                     {
                         std::lock_guard<std::mutex> lock(hashMapMutex);
                         if (hashMap.find(fileHash) != hashMap.end()) {
-                            // Является дубликатом
+                            // РЇРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                             int duplicateCount = hashMap[fileHash]++;
-                            fs::path duplicateDir = newDir / "Duplicates";  // Папка дубликатов внутри устройства
+                            fs::path duplicateDir = newDir / "Duplicates";  // РџР°РїРєР° РґСѓР±Р»РёРєР°С‚РѕРІ РІРЅСѓС‚СЂРё СѓСЃС‚СЂРѕР№СЃС‚РІР°
                             fs::create_directories(duplicateDir);
 
                             fs::path newDuplicatePath = duplicateDir / (filePath.stem().string() + "_duplicated" +
@@ -52,28 +52,28 @@ void processFilesWithDevice(
                             fs::rename(filePath, getUniquePath(newDuplicatePath));
 
                             //std::lock_guard<std::mutex> coutLock(coutMutex);
-                            // std::cout << "Дубликат перемещен: " << filePath << " -> " << newDuplicatePath << std::endl;
+                            // std::cout << "Р”СѓР±Р»РёРєР°С‚ РїРµСЂРµРјРµС‰РµРЅ: " << filePath << " -> " << newDuplicatePath << std::endl;
                         }
                         else {
-                            // Не является дубликатом
+                            // РќРµ СЏРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                             fs::path newPath = newDir / filePath.filename();
                             fs::rename(filePath, getUniquePath(newPath));
                             hashMap[fileHash] = 1;
 
                             //std::lock_guard<std::mutex> coutLock(coutMutex);
-                            // std::cout << "Перемещено: " << filePath << " -> " << newPath << std::endl;
+                            // std::cout << "РџРµСЂРµРјРµС‰РµРЅРѕ: " << filePath << " -> " << newPath << std::endl;
                         }
                     }
                 }
                 else {
-                    // Фото без Exif данных (скачанные с интернета, скриншоты, удалены данные)
+                    // Р¤РѕС‚Рѕ Р±РµР· Exif РґР°РЅРЅС‹С… (СЃРєР°С‡Р°РЅРЅС‹Рµ СЃ РёРЅС‚РµСЂРЅРµС‚Р°, СЃРєСЂРёРЅС€РѕС‚С‹, СѓРґР°Р»РµРЅС‹ РґР°РЅРЅС‹Рµ)
                     fs::path noExifDataDir = targetDirectory / "NoExifData";
                     fs::create_directories(noExifDataDir);
 
                     {
                         std::lock_guard<std::mutex> lock(hashMapMutex);
                         if (hashMap.find(fileHash) != hashMap.end()) {
-                            // Является дубликатом
+                            // РЇРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                             int duplicateCount = hashMap[fileHash]++;
                             fs::path duplicateDir = noExifDataDir / "Duplicates";
                             fs::create_directories(duplicateDir);
@@ -83,29 +83,29 @@ void processFilesWithDevice(
                             fs::rename(filePath, getUniquePath(newDuplicatePath));
 
                             //std::lock_guard<std::mutex> coutLock(coutMutex);
-                            // std::cout << "Дубликат без EXIF перемещен: " << filePath << " -> " << newDuplicatePath << std::endl;
+                            // std::cout << "Р”СѓР±Р»РёРєР°С‚ Р±РµР· EXIF РїРµСЂРµРјРµС‰РµРЅ: " << filePath << " -> " << newDuplicatePath << std::endl;
                         }
                         else {
-                            // Не является дубликатом
+                            // РќРµ СЏРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                             fs::path newPath = noExifDataDir / filePath.filename();
                             fs::rename(filePath, getUniquePath(newPath));
                             hashMap[fileHash] = 1;
 
                             //std::lock_guard<std::mutex> coutLock(coutMutex);
-                            //std::cout << "Файл без EXIF данных перемещен: " << filePath << " -> " << newPath << std::endl;
+                            //std::cout << "Р¤Р°Р№Р» Р±РµР· EXIF РґР°РЅРЅС‹С… РїРµСЂРµРјРµС‰РµРЅ: " << filePath << " -> " << newPath << std::endl;
                         }
                     }
                 }
             }
             else {
-                // Не является фотографией
+                // РќРµ СЏРІР»СЏРµС‚СЃСЏ С„РѕС‚РѕРіСЂР°С„РёРµР№
                 fs::path notPhotosDir = targetDirectory / "NotPhotos";
                 fs::create_directories(notPhotosDir);
 
                 {
                     std::lock_guard<std::mutex> lock(hashMapMutex);
                     if (hashMap.find(fileHash) != hashMap.end()) {
-                        // Является дубликатом
+                        // РЇРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                         int duplicateCount = hashMap[fileHash]++;
                         fs::path duplicateDir = notPhotosDir / "Duplicates";
                         fs::create_directories(duplicateDir);
@@ -116,31 +116,31 @@ void processFilesWithDevice(
                         fs::rename(filePath, getUniquePath(newDuplicatePath));
 
                         //std::lock_guard<std::mutex> coutLock(coutMutex);
-                        //std::cout << "Дубликат не фото перемещен: " << filePath << " -> " << newDuplicatePath << std::endl;
+                        //std::cout << "Р”СѓР±Р»РёРєР°С‚ РЅРµ С„РѕС‚Рѕ РїРµСЂРµРјРµС‰РµРЅ: " << filePath << " -> " << newDuplicatePath << std::endl;
                     }
                     else {
-                        // Не является дубликатом
+                        // РќРµ СЏРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                         fs::path newPath = notPhotosDir / filePath.filename();
                         fs::rename(filePath, getUniquePath(newPath));
                         hashMap[fileHash] = 1;
 
                         //std::lock_guard<std::mutex> coutLock(coutMutex);
-                        //std::cout << "Не изображение перемещено: " << filePath << " -> " << newPath << std::endl;
+                        //std::cout << "РќРµ РёР·РѕР±СЂР°Р¶РµРЅРёРµ РїРµСЂРµРјРµС‰РµРЅРѕ: " << filePath << " -> " << newPath << std::endl;
                     }
                 }
             }
         }
-        // Обработка ошибок
+        // РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє
         catch (const std::exception& e) {
             std::lock_guard<std::mutex> lock(coutMutex);
-            std::cerr << "Ошибка: " << e.what() << " для файла " << filePath << std::endl;
+            std::cerr << "РћС€РёР±РєР°: " << e.what() << " РґР»СЏ С„Р°Р№Р»Р° " << filePath << std::endl;
         }
     }
 }
 
 
 void SortPhotosByGadgetNameParallel(const fs::path& directory, const fs::path& targetDirectory) {
-    std::unordered_map<std::string, int> fileHashes; // Карта для хранения хеш-сумм
+    std::unordered_map<std::string, int> fileHashes; // РљР°СЂС‚Р° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ С…РµС€-СЃСѓРјРј
 
     std::vector<fs::path> allFiles;
     for (const auto& entry : fs::recursive_directory_iterator(directory)) {
@@ -150,7 +150,7 @@ void SortPhotosByGadgetNameParallel(const fs::path& directory, const fs::path& t
     }
 
     size_t totalFiles = allFiles.size();
-    size_t chunkSize = (totalFiles + 3) / 4; // Разбиваем файлы на 4 части
+    size_t chunkSize = (totalFiles + 3) / 4; // Р Р°Р·Р±РёРІР°РµРј С„Р°Р№Р»С‹ РЅР° 4 С‡Р°СЃС‚Рё
     std::vector<std::thread> threads;
 
     for (size_t i = 0; i < 4; ++i) {
@@ -158,17 +158,17 @@ void SortPhotosByGadgetNameParallel(const fs::path& directory, const fs::path& t
         size_t endIdx = std::min(startIdx + chunkSize, totalFiles);
 
         if (startIdx < totalFiles) {
-            // Формируем часть файлов для текущего потока
+            // Р¤РѕСЂРјРёСЂСѓРµРј С‡Р°СЃС‚СЊ С„Р°Р№Р»РѕРІ РґР»СЏ С‚РµРєСѓС‰РµРіРѕ РїРѕС‚РѕРєР°
             std::vector<fs::path> chunk(allFiles.begin() + startIdx, allFiles.begin() + endIdx);
 
-            // Запускаем поток с помощью лямбда-функции
+            // Р—Р°РїСѓСЃРєР°РµРј РїРѕС‚РѕРє СЃ РїРѕРјРѕС‰СЊСЋ Р»СЏРјР±РґР°-С„СѓРЅРєС†РёРё
             threads.emplace_back([chunk, &targetDirectory, &fileHashes]() {
                 processFilesWithDevice(chunk, targetDirectory, fileHashes);
                 });
         }
     }
 
-    // Ожидаем завершения всех потоков
+    // РћР¶РёРґР°РµРј Р·Р°РІРµСЂС€РµРЅРёСЏ РІСЃРµС… РїРѕС‚РѕРєРѕРІ
     for (auto& thread : threads) {
         if (thread.joinable()) {
             thread.join();
@@ -181,35 +181,35 @@ void SortPhotosByGadgetName(const fs::path& directory, const fs::path& targetDir
     try {
         for (const auto& entry : fs::directory_iterator(directory)) {
             if (entry.is_directory()) {
-                SortPhotosByGadgetName(entry.path(), targetDirectory);  // Рекурсивный вызов для подкаталогов
+                SortPhotosByGadgetName(entry.path(), targetDirectory);  // Р РµРєСѓСЂСЃРёРІРЅС‹Р№ РІС‹Р·РѕРІ РґР»СЏ РїРѕРґРєР°С‚Р°Р»РѕРіРѕРІ
             }
             else if (entry.is_regular_file()) {
                 std::string filePath = entry.path().string();
 
-                // Проверяем, является ли файл изображением
+                // РџСЂРѕРІРµСЂСЏРµРј, СЏРІР»СЏРµС‚СЃСЏ Р»Рё С„Р°Р№Р» РёР·РѕР±СЂР°Р¶РµРЅРёРµРј
                 if (isImageFile(entry.path())) {
-                    // Получаем имя камеры для фотографии
+                    // РџРѕР»СѓС‡Р°РµРј РёРјСЏ РєР°РјРµСЂС‹ РґР»СЏ С„РѕС‚РѕРіСЂР°С„РёРё
                     std::string cameraName = GetCameraName(filePath);
 
                     if (cameraName != "NoExifData" && cameraName != "Error") {
-                        // Санитизируем имя камеры, чтобы сделать его допустимым для имени папки
+                        // РЎР°РЅРёС‚РёР·РёСЂСѓРµРј РёРјСЏ РєР°РјРµСЂС‹, С‡С‚РѕР±С‹ СЃРґРµР»Р°С‚СЊ РµРіРѕ РґРѕРїСѓСЃС‚РёРјС‹Рј РґР»СЏ РёРјРµРЅРё РїР°РїРєРё
                         std::string sanitizedCameraName = sanitizeFolderName(cameraName);
 
-                        fs::path newDir = targetDirectory / sanitizedCameraName;  // Папка с именем камеры
-                        fs::create_directories(newDir);  // Создаем папку, если её нет
+                        fs::path newDir = targetDirectory / sanitizedCameraName;  // РџР°РїРєР° СЃ РёРјРµРЅРµРј РєР°РјРµСЂС‹
+                        fs::create_directories(newDir);  // РЎРѕР·РґР°РµРј РїР°РїРєСѓ, РµСЃР»Рё РµС‘ РЅРµС‚
 
-                        // Формируем новый путь для перемещения
+                        // Р¤РѕСЂРјРёСЂСѓРµРј РЅРѕРІС‹Р№ РїСѓС‚СЊ РґР»СЏ РїРµСЂРµРјРµС‰РµРЅРёСЏ
                         fs::path newPath = newDir / entry.path().filename();
 
-                        // Перемещаем файл
+                        // РџРµСЂРµРјРµС‰Р°РµРј С„Р°Р№Р»
                         fs::rename(entry.path(), newPath);
-                        //std::cout << "Перемещено: " << filePath << " -> " << newPath << std::endl;
+                        //std::cout << "РџРµСЂРµРјРµС‰РµРЅРѕ: " << filePath << " -> " << newPath << std::endl;
                     }
                     else {
-                        // Логируем ошибку, если EXIF-данные отсутствуют
-                        std::cerr << "Ошибка обработки изображения (No EXIF data): " << filePath << std::endl;
+                        // Р›РѕРіРёСЂСѓРµРј РѕС€РёР±РєСѓ, РµСЃР»Рё EXIF-РґР°РЅРЅС‹Рµ РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚
+                        std::cerr << "РћС€РёР±РєР° РѕР±СЂР°Р±РѕС‚РєРё РёР·РѕР±СЂР°Р¶РµРЅРёСЏ (No EXIF data): " << filePath << std::endl;
 
-                        // Перемещаем в папку NoExifData
+                        // РџРµСЂРµРјРµС‰Р°РµРј РІ РїР°РїРєСѓ NoExifData
                         fs::path noExifDataDir = targetDirectory / "NoExifData";
                         fs::create_directories(noExifDataDir);
                         fs::path newPath = noExifDataDir / entry.path().filename();
@@ -217,10 +217,10 @@ void SortPhotosByGadgetName(const fs::path& directory, const fs::path& targetDir
                     }
                 }
                 else {
-                    // Логируем ошибку, если файл не является изображением
-                    std::cerr << "Не является изображением: " << filePath << std::endl;
+                    // Р›РѕРіРёСЂСѓРµРј РѕС€РёР±РєСѓ, РµСЃР»Рё С„Р°Р№Р» РЅРµ СЏРІР»СЏРµС‚СЃСЏ РёР·РѕР±СЂР°Р¶РµРЅРёРµРј
+                    std::cerr << "РќРµ СЏРІР»СЏРµС‚СЃСЏ РёР·РѕР±СЂР°Р¶РµРЅРёРµРј: " << filePath << std::endl;
 
-                    // Перемещаем в папку NotPhotos
+                    // РџРµСЂРµРјРµС‰Р°РµРј РІ РїР°РїРєСѓ NotPhotos
                     fs::path notPhotosDir = targetDirectory / "NotPhotos";
                     fs::create_directories(notPhotosDir);
                     fs::path newPath = notPhotosDir / entry.path().filename();
@@ -230,6 +230,6 @@ void SortPhotosByGadgetName(const fs::path& directory, const fs::path& targetDir
         }
     }
     catch (const std::exception& e) {
-        std::cerr << "Ошибка: " << e.what() << std::endl;
+        std::cerr << "РћС€РёР±РєР°: " << e.what() << std::endl;
     }
 }

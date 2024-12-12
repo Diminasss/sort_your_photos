@@ -1,4 +1,4 @@
-#include "SortByYear.h"
+п»ї#include "SortByYear.h"
 
 #include "../CommonFunctions/computeFileHash.h"
 #include "../CommonFunctions/IsImageFile.h"
@@ -19,25 +19,25 @@ void processFilesWithYear(
 
     for (const auto& filePath : files) {
         try {
-            // Считаем хеш файла
+            // РЎС‡РёС‚Р°РµРј С…РµС€ С„Р°Р№Р»Р°
             std::string fileHash = computeFileHash(filePath);
 
             if (isImageFile(filePath)) {
-                // Является картинкой
+                // РЇРІР»СЏРµС‚СЃСЏ РєР°СЂС‚РёРЅРєРѕР№
                 std::string year = GetYearOfPhoto(filePath.string());
 
                 if (year != "NoYearData" && year.find("Error") == std::string::npos) {
-                    // Фото имеет данные о годе
-                    std::string sanitizedYear = sanitizeFolderName(year); // Санитизация имени директории
+                    // Р¤РѕС‚Рѕ РёРјРµРµС‚ РґР°РЅРЅС‹Рµ Рѕ РіРѕРґРµ
+                    std::string sanitizedYear = sanitizeFolderName(year); // РЎР°РЅРёС‚РёР·Р°С†РёСЏ РёРјРµРЅРё РґРёСЂРµРєС‚РѕСЂРёРё
                     fs::path yearDir = targetDirectory / sanitizedYear;
                     fs::create_directories(yearDir);
 
                     {
                         std::lock_guard<std::mutex> lock(hashMapMutex);
                         if (hashMap.find(fileHash) != hashMap.end()) {
-                            // Является дубликатом
+                            // РЇРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                             int duplicateCount = hashMap[fileHash]++;
-                            fs::path duplicateDir = yearDir / "Duplicates";  // Папка дубликатов внутри года
+                            fs::path duplicateDir = yearDir / "Duplicates";  // РџР°РїРєР° РґСѓР±Р»РёРєР°С‚РѕРІ РІРЅСѓС‚СЂРё РіРѕРґР°
                             fs::create_directories(duplicateDir);
 
                             fs::path newDuplicatePath = duplicateDir / (filePath.stem().string() + "_duplicated" +
@@ -46,7 +46,7 @@ void processFilesWithYear(
                             fs::rename(filePath, getUniquePath(newDuplicatePath));
                         }
                         else {
-                            // Не является дубликатом
+                            // РќРµ СЏРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                             fs::path newPath = yearDir / filePath.filename();
                             fs::rename(filePath, getUniquePath(newPath));
                             hashMap[fileHash] = 1;
@@ -54,14 +54,14 @@ void processFilesWithYear(
                     }
                 }
                 else {
-                    // Фото без данных о годе
+                    // Р¤РѕС‚Рѕ Р±РµР· РґР°РЅРЅС‹С… Рѕ РіРѕРґРµ
                     fs::path noYearDir = targetDirectory / "NoYearData";
                     fs::create_directories(noYearDir);
 
                     {
                         std::lock_guard<std::mutex> lock(hashMapMutex);
                         if (hashMap.find(fileHash) != hashMap.end()) {
-                            // Является дубликатом
+                            // РЇРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                             int duplicateCount = hashMap[fileHash]++;
                             fs::path duplicateDir = noYearDir / "Duplicates";
                             fs::create_directories(duplicateDir);
@@ -72,7 +72,7 @@ void processFilesWithYear(
                             fs::rename(filePath, getUniquePath(newDuplicatePath));
                         }
                         else {
-                            // Не является дубликатом
+                            // РќРµ СЏРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                             fs::path newPath = noYearDir / filePath.filename();
                             fs::rename(filePath, getUniquePath(newPath));
                             hashMap[fileHash] = 1;
@@ -81,14 +81,14 @@ void processFilesWithYear(
                 }
             }
             else {
-                // Не является картинкой
+                // РќРµ СЏРІР»СЏРµС‚СЃСЏ РєР°СЂС‚РёРЅРєРѕР№
                 fs::path notPhotosDir = targetDirectory / "NotPhotos";
                 fs::create_directories(notPhotosDir);
 
                 {
                     std::lock_guard<std::mutex> lock(hashMapMutex);
                     if (hashMap.find(fileHash) != hashMap.end()) {
-                        // Является дубликатом
+                        // РЇРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                         int duplicateCount = hashMap[fileHash]++;
                         fs::path duplicateDir = notPhotosDir / "Duplicates";
                         fs::create_directories(duplicateDir);
@@ -99,7 +99,7 @@ void processFilesWithYear(
                         fs::rename(filePath, getUniquePath(newDuplicatePath));
                     }
                     else {
-                        // Не является дубликатом
+                        // РќРµ СЏРІР»СЏРµС‚СЃСЏ РґСѓР±Р»РёРєР°С‚РѕРј
                         fs::path newPath = notPhotosDir / filePath.filename();
                         fs::rename(filePath, getUniquePath(newPath));
                         hashMap[fileHash] = 1;
@@ -107,10 +107,10 @@ void processFilesWithYear(
                 }
             }
         }
-        // Обработка ошибок
+        // РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє
         catch (const std::exception& e) {
             std::lock_guard<std::mutex> lock(coutMutex);
-            std::cerr << "Ошибка: " << e.what() << " для файла " << filePath << std::endl;
+            std::cerr << "РћС€РёР±РєР°: " << e.what() << " РґР»СЏ С„Р°Р№Р»Р° " << filePath << std::endl;
         }
     }
 }
@@ -181,7 +181,7 @@ void processFilesWithYear(
 //        }
 //        catch (const std::exception& e) {
 //            std::lock_guard<std::mutex> lock(coutMutex);
-//            std::cerr << "Ошибка: " << e.what() << " для файла " << filePath << std::endl;
+//            std::cerr << "РћС€РёР±РєР°: " << e.what() << " РґР»СЏ С„Р°Р№Р»Р° " << filePath << std::endl;
 //        }
 //    }
 //}
@@ -197,7 +197,7 @@ void SortByYearParallel(const fs::path& directory, const fs::path& targetDirecto
     }
 
     size_t totalFiles = allFiles.size();
-    size_t chunkSize = (totalFiles + 3) / 4; // 4 потока
+    size_t chunkSize = (totalFiles + 3) / 4; // 4 РїРѕС‚РѕРєР°
     std::vector<std::thread> threads;
 
     for (size_t i = 0; i < 4; ++i) {

@@ -1,0 +1,9 @@
+C:/Users/johnworker/Desktop/Проекты C++/sort your photos qt/frontend_sort_photo/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/CMakeFiles/frontend_sort_photo.dir
+C:/Users/johnworker/Desktop/Проекты C++/sort your photos qt/frontend_sort_photo/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/johnworker/Desktop/Проекты C++/sort your photos qt/frontend_sort_photo/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/johnworker/Desktop/Проекты C++/sort your photos qt/frontend_sort_photo/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
+C:/Users/johnworker/Desktop/Проекты C++/sort your photos qt/frontend_sort_photo/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/CMakeFiles/install.dir
+C:/Users/johnworker/Desktop/Проекты C++/sort your photos qt/frontend_sort_photo/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
+C:/Users/johnworker/Desktop/Проекты C++/sort your photos qt/frontend_sort_photo/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
+C:/Users/johnworker/Desktop/Проекты C++/sort your photos qt/frontend_sort_photo/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/CMakeFiles/frontend_sort_photo_autogen_timestamp_deps.dir
+C:/Users/johnworker/Desktop/Проекты C++/sort your photos qt/frontend_sort_photo/build/Desktop_Qt_6_8_1_MinGW_64_bit-Debug/CMakeFiles/frontend_sort_photo_autogen.dir

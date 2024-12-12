@@ -36,13 +36,11 @@ private slots:
     void browseForTargetFolder();
     void openSortingWindow(); // Слот для открытия нового окна
     void openLoadingWindow();  // Новый слот для открытия окна с загрузкой
-    void updateProgressBar(int value);
-    //void updateProgressBar(int value);  // Обновление прогресс-бара
 
 
 private:
     QLineEdit *pathEdit1; // Указатель на поле pathEdit1
-    QLineEdit *pathEdit2; // Указатель на поле pathEdit2, если потребуется
+    QLineEdit *pathEdit2;  // Объявление pathEdit2 как члена класса// Указатель на поле pathEdit2, если потребуется
     QRadioButton *sortByNameRadio; // Радиокнопка для сортировки по названию телефона
     QRadioButton *sortByDateRadio; // Радиокнопка для сортировки по дате
     QButtonGroup *sortGroup;       // Группа радиокнопок для выбора метода сортировки
@@ -51,10 +49,7 @@ private:
     SortingWidget *sortingWidget; // Указатель на новое окно
 
     LoadingWidget *loadingWidget;  // Указатель на окно загрузки
-    QProgressBar *progressBar;  // Прогресс-бар для отображения загрузки
     QPushButton *continueButton;  // Кнопка для продолжения после загрузки
-
-    //Ui::MainWindow *ui;
 
 };
 

@@ -568,6 +568,7 @@ frontend_sort_photo_autogen/timestamp: \
 	C:/Users/nensi/Documents/SUAI/Course3/sort_your_photos/frontend_sort_photo/main.cpp \
 	C:/Users/nensi/Documents/SUAI/Course3/sort_your_photos/frontend_sort_photo/mainwindow.cpp \
 	C:/Users/nensi/Documents/SUAI/Course3/sort_your_photos/frontend_sort_photo/mainwindow.h \
+	C:/Users/nensi/Documents/SUAI/Course3/sort_your_photos/frontend_sort_photo/resources.qrc \
 	C:/Users/nensi/Documents/SUAI/Course3/sort_your_photos/frontend_sort_photo/sortingwidget.cpp \
 	C:/Users/nensi/Documents/SUAI/Course3/sort_your_photos/frontend_sort_photo/sortingwidget.h \
 	C:/Qt/Tools/CMake_64/bin/cmake.exe

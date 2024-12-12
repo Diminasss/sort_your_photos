@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Translation Files">
+      <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
+      <Extensions>ts</Extensions>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{0c7e095d-68cc-46ee-ad75-c72714f96fca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Qt Frontend">
+      <UniqueIdentifier>{bf4fdf6e-78f3-4795-89de-81f1ff321734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Qt Frontend">
+      <UniqueIdentifier>{ce882cad-933a-448a-9c2c-8455ff9363eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Program Files">
+      <UniqueIdentifier>{a6cb997c-ffb0-4dae-8f13-ef58a0f0b83e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Program Files">
+      <UniqueIdentifier>{bcec67e5-a6bd-48f7-956a-2b76d22a17e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Program Files\CommonFunctions">
+      <UniqueIdentifier>{3e3f1a51-a053-4082-a46e-ed8c7a9118b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Program Files\CommonFunctions">
+      <UniqueIdentifier>{10af7871-caed-4a59-8c2c-53b2fce0306b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Program Files\GetPhotosParameters">
+      <UniqueIdentifier>{941c7580-1ce6-42f2-a18b-9966b28efdb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Program Files\GetPhotosParameters">
+      <UniqueIdentifier>{8179de93-7227-41f3-a9a6-cfad77326919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Program Files\SortPhotosAlgorithms">
+      <UniqueIdentifier>{50d88d86-5c91-4f45-a048-6d1149d89176}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Program Files\SortPhotosAlgorithms">
+      <UniqueIdentifier>{26e5a3ac-48e0-4f49-9b3e-904f42c7c61b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MediaContent">
+      <UniqueIdentifier>{3d3df5b8-6579-48ed-81f0-fcec40f6b3fb}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend_sort_photo\loadingwidget.cpp">
+      <Filter>Source Files\Qt Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend_sort_photo\mainwindow.cpp">
+      <Filter>Source Files\Qt Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="frontend_sort_photo\sortingwidget.cpp">
+      <Filter>Source Files\Qt Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\CommonFunctions\computeFileHash.cpp">
+      <Filter>Source Files\Program Files\CommonFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\CommonFunctions\getUniquePath.cpp">
+      <Filter>Source Files\Program Files\CommonFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\CommonFunctions\IsImageFile.cpp">
+      <Filter>Source Files\Program Files\CommonFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\GetPhotosParameters\GetCameraName.cpp">
+      <Filter>Source Files\Program Files\GetPhotosParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\GetPhotosParameters\GetYearOfPhoto.cpp">
+      <Filter>Source Files\Program Files\GetPhotosParameters</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.cpp">
+      <Filter>Source Files\Program Files\SortPhotosAlgorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\SortPhotosAlgorithms\SortByYear.cpp">
+      <Filter>Source Files\Program Files\SortPhotosAlgorithms</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\CommonFunctions\SanitizeFolderName.cpp">
+      <Filter>Source Files\Program Files\CommonFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\CommonFunctions\writeLog.cpp">
+      <Filter>Source Files\Program Files\CommonFunctions</Filter>
+    </ClCompile>
+    <ClCompile Include="ProgramFiles\CommonFunctions\clearAndOpen.cpp">
+      <Filter>Source Files\Program Files\CommonFunctions</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="frontend_sort_photo\mainwindow.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+    <QtRcc Include="frontend_sort_photo\resources.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="frontend_sort_photo\loadingwidget.h">
+      <Filter>Headers\Qt Frontend</Filter>
+    </QtMoc>
+    <QtMoc Include="frontend_sort_photo\mainwindow.h">
+      <Filter>Headers\Qt Frontend</Filter>
+    </QtMoc>
+    <QtMoc Include="frontend_sort_photo\sortingwidget.h">
+      <Filter>Headers\Qt Frontend</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="frontend_sort_photo\mainwindow.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ProgramFiles\CommonFunctions\computeFileHash.h">
+      <Filter>Headers\Program Files\CommonFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\CommonFunctions\getUniquePath.h">
+      <Filter>Headers\Program Files\CommonFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\CommonFunctions\IsImageFile.h">
+      <Filter>Headers\Program Files\CommonFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\GetPhotosParameters\GetCameraName.h">
+      <Filter>Headers\Program Files\GetPhotosParameters</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\GetPhotosParameters\GetYearOfPhoto.h">
+      <Filter>Headers\Program Files\GetPhotosParameters</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\SortPhotosAlgorithms\SortByGadgetName.h">
+      <Filter>Headers\Program Files\SortPhotosAlgorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\SortPhotosAlgorithms\SortByYear.h">
+      <Filter>Headers\Program Files\SortPhotosAlgorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\CommonFunctions\SanitizeFolderName.h">
+      <Filter>Headers\Program Files\CommonFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\CommonFunctions\writeLog.h">
+      <Filter>Headers\Program Files\CommonFunctions</Filter>
+    </ClInclude>
+    <ClInclude Include="ProgramFiles\CommonFunctions\clearAndOpen.h">
+      <Filter>Headers\Program Files\CommonFunctions</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="frontend_sort_photo\cat.gif">
+      <Filter>MediaContent</Filter>
+    </Image>
+    <Image Include="frontend_sort_photo\cat-spinning.gif">
+      <Filter>MediaContent</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

@@ -476,3 +476,4 @@ FodyWeavers.xsd
 *.sln.iml
 
 SortedPhotos/
+/libs/msvc2022_64/

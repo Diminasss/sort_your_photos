@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>cat-spinning.gif</file>
+        <file>cat.gif</file>
+    </qresource>
+</RCC>

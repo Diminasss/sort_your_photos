@@ -1,4 +1,4 @@
-#include "GetCameraName.h"
+п»ї#include "GetCameraName.h"
 #include <exiv2/exiv2.hpp>
 
 
@@ -15,7 +15,7 @@ std::string GetCameraName(const std::string& imagePath) {
         std::string make = exifData["Exif.Image.Make"].toString();
         std::string model = exifData["Exif.Image.Model"].toString();
 
-        // Объединяем строку
+        // РћР±СЉРµРґРёРЅСЏРµРј СЃС‚СЂРѕРєСѓ
         std::string MakedModel = make + " " + model;
 
         return MakedModel;

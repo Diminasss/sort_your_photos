@@ -1,4 +1,4 @@
-#include "GetYearOfPhoto.h"
+п»ї#include "GetYearOfPhoto.h"
 
 
 std::string GetYearOfPhoto(const std::string& imagePath) {
@@ -11,13 +11,13 @@ std::string GetYearOfPhoto(const std::string& imagePath) {
             return "NoYearData";
         }
 
-        // Проверяем наличие тега даты и времени съемки
+        // РџСЂРѕРІРµСЂСЏРµРј РЅР°Р»РёС‡РёРµ С‚РµРіР° РґР°С‚С‹ Рё РІСЂРµРјРµРЅРё СЃСЉРµРјРєРё
         if (exifData.findKey(Exiv2::ExifKey("Exif.Photo.DateTimeOriginal")) != exifData.end()) {
             std::string dateTimeOriginal = exifData["Exif.Photo.DateTimeOriginal"].toString();
 
-            // Извлекаем год (формат "YYYY:MM:DD HH:MM:SS")
+            // РР·РІР»РµРєР°РµРј РіРѕРґ (С„РѕСЂРјР°С‚ "YYYY:MM:DD HH:MM:SS")
             if (dateTimeOriginal.length() >= 4) {
-                return dateTimeOriginal.substr(0, 4); // Первые четыре символа — это год
+                return dateTimeOriginal.substr(0, 4); // РџРµСЂРІС‹Рµ С‡РµС‚С‹СЂРµ СЃРёРјРІРѕР»Р° вЂ” СЌС‚Рѕ РіРѕРґ
             }
         }
 

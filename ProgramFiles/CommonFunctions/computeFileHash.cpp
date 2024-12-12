@@ -1,4 +1,4 @@
-#include "computeFileHash.h"
+﻿#include "computeFileHash.h"
 
 
 std::string computeFileHash(const fs::path& filePath) {

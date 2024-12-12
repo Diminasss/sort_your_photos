@@ -6,6 +6,7 @@
 #include <QLinearGradient>
 #include <QFileDialog>
 #include <QDebug> // Для отладочного вывода
+#include <QMessageBox> // Для сообщений об ошибках
 
 MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullptr), loadingWidget(nullptr) {
     // Установка заголовка окна
@@ -25,15 +26,16 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
 
     // Заголовок
     QLabel *titleLabel = new QLabel("Выбор папки для сортировки", this);
-    titleLabel->setStyleSheet("font-size: 24px; color: white; font-weight: bold;");
+    titleLabel->setStyleSheet("font-size: 24px; color: rgb(128, 0, 128); font-weight: bold;");
     titleLabel->setAlignment(Qt::AlignCenter);
 
     QLabel *subtitleLabel = new QLabel("Сортировка может занять некоторое время...", this);
-    subtitleLabel->setStyleSheet("font-size: 16px; color: white;");
+    subtitleLabel->setStyleSheet("font-size: 16px; color: rgb(128, 0, 128);");
     subtitleLabel->setAlignment(Qt::AlignCenter);
+    subtitleLabel->setContentsMargins(0, -30, 0, 0);
 
     QLabel *pathLabel1 = new QLabel("Укажите путь к неотсортированной папке с фото:", this);
-    pathLabel1->setStyleSheet("font-size: 14px; color: black;");
+    pathLabel1->setStyleSheet("font-size: 16px; color: rgb(128, 0, 128); font-weight: bold;");
 
     pathEdit1 = new QLineEdit(this);
     //QLineEdit *pathEdit1 = new QLineEdit(this);
@@ -49,9 +51,9 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     pathLayout1->addWidget(browseButton1);
 
     QLabel *pathLabel2 = new QLabel("Укажите путь к папке, в которую будут размещены отсортированные фото:", this);
-    pathLabel2->setStyleSheet("font-size: 14px; color: black;");
+    pathLabel2->setStyleSheet("font-size: 16px; color: rgb(100, 0, 100); font-weight: bold;");
 
-    QLineEdit *pathEdit2 = new QLineEdit(this);
+    pathEdit2 = new QLineEdit(this);
     pathEdit2->setPlaceholderText("Выберите путь...");
     pathEdit2->setStyleSheet("background-color: white; padding: 5px; color: blue");
 
@@ -75,8 +77,8 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     //////////////////////////////////////////////////////////////////////////////////////////////////////
     sortByNameRadio = new QRadioButton("Сортировка фото по названию телефона", this);
     sortByDateRadio = new QRadioButton("Сортировка фото по датам", this);
-    sortByNameRadio->setStyleSheet("font-size: 14px; color: black;");
-    sortByDateRadio->setStyleSheet("font-size: 14px; color: black;");
+    sortByNameRadio->setStyleSheet("font-size: 14px; color: rgb(70, 0, 70); font-weight: bold;");
+    sortByDateRadio->setStyleSheet("font-size: 14px; color: rgb(70, 0, 70); font-weight: bold;");
 
     sortGroup = new QButtonGroup(this);
     sortGroup->addButton(sortByNameRadio);
@@ -99,12 +101,8 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
 
     mainLayout->setContentsMargins(20, 20, 20, 20);
     mainLayout->setSpacing(15);
-
-    progressBar = new QProgressBar(this);
-    progressBar->setRange(0, 100);  // Устанавливаем диапазон значений прогресс-бара
-    progressBar->setValue(0);  // Начальное значение
-    mainLayout->addWidget(progressBar);  // Добавляем прогресс-бар в основной layout
 }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 // void MainWindow::browseForFolder() {
@@ -129,23 +127,19 @@ void MainWindow::browseForTargetFolder() {
     }
 }
 
-
-void MainWindow::updateProgressBar(int value) {
-    if (progressBar) {
-        progressBar->setValue(value);  // Устанавливаем значение прогресс-бара
-    }
-}
-
 void MainWindow::openLoadingWindow() {
+    if (pathEdit1->text().isEmpty() || pathEdit2->text().isEmpty()) {
+        QMessageBox::warning(this, "Ошибка", "Пожалуйста, укажите пути к обеим папкам.");
+        return;
+    }
     if (!loadingWidget) {
         loadingWidget = new LoadingWidget();
-        connect(loadingWidget, &LoadingWidget::nextWindowRequested, this, &MainWindow::openSortingWindow);
+        loadingWidget->setTargetFolderPath(pathEdit2->text());  // Передаем путь к целевой папке
+        //connect(loadingWidget, &LoadingWidget::nextWindowRequested, this, &MainWindow::openSortingWindow);
     }
     loadingWidget->show();
     this->hide();  // Скрываем главное окно
 }
-
-
 
 void MainWindow::openSortingWindow() {
     if (!sortingWidget) {
