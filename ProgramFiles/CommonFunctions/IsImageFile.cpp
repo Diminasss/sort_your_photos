@@ -1,7 +1,7 @@
 ﻿#include "IsImageFile.h"
 
+// Функция, которая проверяет, является ли файл фотографией
 bool isImageFile(const fs::path& filePath) {
-    // Для упрощения проверки считаем, что изображения имеют расширения .jpg, .jpeg, .png, .bmp и т. д.
     std::vector<std::string> imageExtensions = { ".jpg", ".jpeg", ".png", ".bmp", ".tiff", ".gif", ".dng" };
 
     std::string extension = filePath.extension().string();

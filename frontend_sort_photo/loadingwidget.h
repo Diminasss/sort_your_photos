@@ -1,37 +1,47 @@
-// loadingwidget.h
-
 #pragma once
 
 #ifndef LOADINGWIDGET_H
 #define LOADINGWIDGET_H
 
 #include <QWidget>
-#include <QPushButton>
-#include <QProgressBar>
-#include <QVBoxLayout>
 #include <QLabel>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QTimer>
+#include <QPalette>
+#include <QLinearGradient>
+#include <QMovie>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QIcon>
+#include <QString>
+
+#include "../ProgramFiles/CommonFunctions/writeLog.h"
+#define writeLog(msg) writeLog(msg, __FILE__, __LINE__)
 
 class LoadingWidget : public QWidget {
-    Q_OBJECT  // Убедитесь, что макрос Q_OBJECT присутствует
+    Q_OBJECT 
 
 public:
     explicit LoadingWidget(QWidget *parent = nullptr);
-    void setTargetFolderPath(const QString &path);  // Метод для установки пути к папке
+    void setTargetFolderPath(const QString &path);  
+    void sortingFinished();
 
 signals:
-    void nextWindowRequested();  // Сигнал для перехода к следующему окну
+    void nextWindowRequested();  
 
 
 private slots:
-    void onContinueButtonClicked(); // Слот для обработки нажатия кнопки
+    void onContinueButtonClicked(); 
 
 private:
-    //QProgressBar *progressBar;  // Прогресс-бар
-    QPushButton *continueButton;  // Кнопка для продолжения
-    QLabel *loadingLabel;  // Подсказка
+    QPushButton *continueButton;  
+    QLabel *loadingLabel;  
     QLabel *statusLabel;
     QLabel *spinnerLabel;
     QString targetFolderPath;
+    QTimer *timer;
+    int elapsedTime = 0;
 };
 
-#endif // LOADINGWIDGET_H
+#endif 

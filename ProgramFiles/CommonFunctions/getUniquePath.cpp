@@ -1,5 +1,6 @@
 ﻿#include "getUniquePath.h"
 
+// Функция, которая позволяет получить уникальный путь для файла
 fs::path getUniquePath(const fs::path& originalPath) {
     fs::path uniquePath = originalPath;
     int counter = 1;

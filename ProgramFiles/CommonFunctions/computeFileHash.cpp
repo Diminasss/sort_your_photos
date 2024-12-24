@@ -1,6 +1,6 @@
 ﻿#include "computeFileHash.h"
 
-
+// Функция, которая вычисляет хэш файла по алгоритму SHA256
 std::string computeFileHash(const fs::path& filePath) {
     std::ifstream file(filePath, std::ios::binary);
     if (!file) {

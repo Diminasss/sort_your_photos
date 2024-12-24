@@ -2,23 +2,32 @@
 #ifndef SORT_FRONT_H
 #define SORT_FRONT_H
 
-#include <QMainWindow>
+#include <string>
+#include <vector>
+#include <filesystem>
+#include <algorithm>
+
 #include <QWidget>
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
 #include <QRadioButton>
 #include <QButtonGroup>
-#include <QProgressBar>  // Для прогресс-бара
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QtConcurrent/QtConcurrent>
+#include <QMetaObject>
+#include <QPalette>
+#include <QLinearGradient>
+#include <QIcon>
 
-#include "sortingwidget.h"
 #include "loadingwidget.h"
 
-// namespace Ui {
-// class MainWindow;
-// }
+#include "../ProgramFiles/SortPhotosAlgorithms/SortByGadgetName.h"
+#include "../ProgramFiles/SortPhotosAlgorithms/SortByYear.h"
+
+#include "../ProgramFiles/CommonFunctions/writeLog.h"
+#define writeLog(msg) writeLog(msg, __FILE__, __LINE__)
 
 class MainWindow : public QWidget {
     Q_OBJECT
@@ -26,32 +35,25 @@ class MainWindow : public QWidget {
 
 public:
     explicit MainWindow (QWidget *parent = nullptr);
-    //~FileSendWidget() override; // Деструктор
-    //QLineEdit *pathEdit1;
 
 
 private slots:
-    //void browseForFolder(); // Слот для обработки выбора папки
     void browseForSourceFolder();
     void browseForTargetFolder();
-    void openSortingWindow(); // Слот для открытия нового окна
-    void openLoadingWindow();  // Новый слот для открытия окна с загрузкой
+    void openLoadingWindow();  
 
 
 private:
-    QLineEdit *pathEdit1; // Указатель на поле pathEdit1
-    QLineEdit *pathEdit2;  // Объявление pathEdit2 как члена класса// Указатель на поле pathEdit2, если потребуется
-    QRadioButton *sortByNameRadio; // Радиокнопка для сортировки по названию телефона
-    QRadioButton *sortByDateRadio; // Радиокнопка для сортировки по дате
-    QButtonGroup *sortGroup;       // Группа радиокнопок для выбора метода сортировки
+    QLineEdit *pathEdit1; 
+    QLineEdit *pathEdit2;  
+    QRadioButton *sortByNameRadio; 
+    QRadioButton *sortByDateRadio; 
+    QButtonGroup *sortGroup;       
 
-    QPushButton *nextButton;  // Кнопка "Далее"
-    SortingWidget *sortingWidget; // Указатель на новое окно
+    QPushButton *nextButton;  
 
-    LoadingWidget *loadingWidget;  // Указатель на окно загрузки
-    QPushButton *continueButton;  // Кнопка для продолжения после загрузки
+    LoadingWidget *loadingWidget; 
+    QPushButton *continueButton; 
 
 };
-
-
-#endif // SORT_FRONT_H
+#endif 

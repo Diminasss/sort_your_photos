@@ -8,6 +8,15 @@
 #include <string>
 #include <algorithm>
 
+#include "../GetPhotosParameters/GetCameraName.h"
+
+#include "../CommonFunctions/IsImageFile.h"
+#include "../CommonFunctions/SanitizeFolderName.h"
+#include "../CommonFunctions/computeFileHash.h"
+#include "../CommonFunctions/getUniquePath.h"
+
+#include "../CommonFunctions/writeLog.h"
+#define writeLog(msg) writeLog(msg, __FILE__, __LINE__)
 
 namespace fs = std::filesystem;
 

@@ -1,17 +1,12 @@
 #include "mainwindow.h"
-#include "sortingwidget.h"
-#include "loadingwidget.h"
 
-#include <QPalette>
-#include <QLinearGradient>
-#include <QFileDialog>
-#include <QDebug> // Для отладочного вывода
-#include <QMessageBox> // Для сообщений об ошибках
-
-MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullptr), loadingWidget(nullptr) {
+// Главное окно
+MainWindow::MainWindow (QWidget *parent) : QWidget(parent),   loadingWidget(nullptr) {
     // Установка заголовка окна
-    setWindowTitle("FileSend");
+    setWindowTitle("Sort Your Photo");
     setFixedSize(800, 500);
+    QIcon icon("app_icon.ico");
+    setWindowIcon(icon);
 
     // Настройка цвета и градиента фона
     QPalette palette;
@@ -25,11 +20,11 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     QVBoxLayout *mainLayout = new QVBoxLayout(this);
 
     // Заголовок
-    QLabel *titleLabel = new QLabel("Выбор папки для сортировки", this);
+    QLabel *titleLabel = new QLabel("Какую папку вы хотите упорядочить?", this);
     titleLabel->setStyleSheet("font-size: 24px; color: rgb(128, 0, 128); font-weight: bold;");
     titleLabel->setAlignment(Qt::AlignCenter);
 
-    QLabel *subtitleLabel = new QLabel("Сортировка может занять некоторое время...", this);
+    QLabel *subtitleLabel = new QLabel("Сортировка может занять некоторое время", this);
     subtitleLabel->setStyleSheet("font-size: 16px; color: rgb(128, 0, 128);");
     subtitleLabel->setAlignment(Qt::AlignCenter);
     subtitleLabel->setContentsMargins(0, -30, 0, 0);
@@ -38,7 +33,6 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     pathLabel1->setStyleSheet("font-size: 16px; color: rgb(128, 0, 128); font-weight: bold;");
 
     pathEdit1 = new QLineEdit(this);
-    //QLineEdit *pathEdit1 = new QLineEdit(this);
     pathEdit1->setPlaceholderText("Выберите путь...");
     pathEdit1->setStyleSheet("background-color: white; padding: 5px; color: purple");
 
@@ -74,9 +68,8 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     mainLayout->addLayout(pathLayout2);
 
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
     sortByNameRadio = new QRadioButton("Сортировка фото по названию телефона", this);
-    sortByDateRadio = new QRadioButton("Сортировка фото по датам", this);
+    sortByDateRadio = new QRadioButton("Сортировка фото по годам", this);
     sortByNameRadio->setStyleSheet("font-size: 14px; color: rgb(70, 0, 70); font-weight: bold;");
     sortByDateRadio->setStyleSheet("font-size: 14px; color: rgb(70, 0, 70); font-weight: bold;");
 
@@ -90,7 +83,6 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
 
     nextButton = new QPushButton("Начать сортировку", this);
     nextButton->setStyleSheet("background-color: #008CBA; color: white; font-size: 16px; padding: 10px;");
-    //connect(nextButton, SIGNAL(clicked()), this, SLOT(openSortingWindow()));
     connect(nextButton, &QPushButton::clicked, this, &MainWindow::openLoadingWindow);
 
     QHBoxLayout *buttonLayout = new QHBoxLayout;
@@ -102,17 +94,8 @@ MainWindow::MainWindow (QWidget *parent) : QWidget(parent),  sortingWidget(nullp
     mainLayout->setContentsMargins(20, 20, 20, 20);
     mainLayout->setSpacing(15);
 }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-// void MainWindow::browseForFolder() {
-//     QString folderPath = QFileDialog::getExistingDirectory(this, "Выберите папку", "");
-//     if (!folderPath.isEmpty()) {
-//         pathEdit1->setText(folderPath);  // Устанавливаем путь в первое поле
-//         //pathEdit2->setText(folderPath);  // Устанавливаем путь во второе поле
-//     }
-// }
-
+// Проводник для источника
 void MainWindow::browseForSourceFolder() {
     QString folderPath = QFileDialog::getExistingDirectory(this, "Выберите исходную папку", "");
     if (!folderPath.isEmpty()) {
@@ -120,6 +103,7 @@ void MainWindow::browseForSourceFolder() {
     }
 }
 
+// Проводник для цели
 void MainWindow::browseForTargetFolder() {
     QString folderPath = QFileDialog::getExistingDirectory(this, "Выберите целевую папку", "");
     if (!folderPath.isEmpty()) {
@@ -127,32 +111,44 @@ void MainWindow::browseForTargetFolder() {
     }
 }
 
+// Открыть окно загрузки. Основное окно - LoadingWindow
 void MainWindow::openLoadingWindow() {
     if (pathEdit1->text().isEmpty() || pathEdit2->text().isEmpty()) {
         QMessageBox::warning(this, "Ошибка", "Пожалуйста, укажите пути к обеим папкам.");
         return;
     }
+    
+    std::filesystem::path sourceDirectory = std::filesystem::path(pathEdit1->text().toStdString());
+    std::filesystem::path targetDirectory = std::filesystem::path(pathEdit2->text().toStdString());
+    writeLog(pathEdit1->text() + "Источник");
+    writeLog(pathEdit2->text() + "Целевая");
+
     if (!loadingWidget) {
         loadingWidget = new LoadingWidget();
-        loadingWidget->setTargetFolderPath(pathEdit2->text());  // Передаем путь к целевой папке
-        //connect(loadingWidget, &LoadingWidget::nextWindowRequested, this, &MainWindow::openSortingWindow);
+        QString tDir = pathEdit2->text();
+        loadingWidget->setTargetFolderPath(tDir);  // Передаем путь к целевой папке
     }
+
+    // Показываем окно загрузки
     loadingWidget->show();
-    this->hide();  // Скрываем главное окно
-}
-
-void MainWindow::openSortingWindow() {
-    if (!sortingWidget) {
-        sortingWidget = new SortingWidget();
-        qDebug() << "SortingWidget created.";
-    }
-    sortingWidget->show();
-    qDebug() << "SortingWidget shown.";
     this->hide();
-    qDebug() << "Main window hidden.";
 
-    // this->hide();
-    // sortingWidget = new SortingWidget();
-    // sortingWidget->show();
+    // Запускаем сортировку в отдельном потоке
+    QtConcurrent::run([this, sourceDirectory, targetDirectory]() {
+        if (sortByNameRadio->isChecked()) {
+            writeLog("Сортировка по названию телефона началась");
+            SortPhotosByGadgetNameParallel(sourceDirectory, targetDirectory);
+            writeLog("Сортировка по названию телефона завершена");
+        }
+        else if (sortByDateRadio->isChecked()) {
+            writeLog("Сортировка по датам началась");
+            SortByYearParallel(sourceDirectory, targetDirectory);
+            writeLog("Сортировка по датам завершена");
+        }
 
+        // По завершении сортировки переключаемся на главный поток
+        QMetaObject::invokeMethod(loadingWidget, [&]() {
+            loadingWidget->sortingFinished();  // Сообщаем, что сортировка завершена
+            });
+        });
 }

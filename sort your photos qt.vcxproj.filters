@@ -64,9 +64,6 @@
     <ClCompile Include="frontend_sort_photo\mainwindow.cpp">
       <Filter>Source Files\Qt Frontend</Filter>
     </ClCompile>
-    <ClCompile Include="frontend_sort_photo\sortingwidget.cpp">
-      <Filter>Source Files\Qt Frontend</Filter>
-    </ClCompile>
     <ClCompile Include="ProgramFiles\CommonFunctions\computeFileHash.cpp">
       <Filter>Source Files\Program Files\CommonFunctions</Filter>
     </ClCompile>
@@ -111,9 +108,6 @@
       <Filter>Headers\Qt Frontend</Filter>
     </QtMoc>
     <QtMoc Include="frontend_sort_photo\mainwindow.h">
-      <Filter>Headers\Qt Frontend</Filter>
-    </QtMoc>
-    <QtMoc Include="frontend_sort_photo\sortingwidget.h">
       <Filter>Headers\Qt Frontend</Filter>
     </QtMoc>
   </ItemGroup>

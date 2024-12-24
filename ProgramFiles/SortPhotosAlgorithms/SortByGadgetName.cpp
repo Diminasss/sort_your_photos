@@ -1,38 +1,26 @@
 ﻿#include "SortByGadgetName.h"
 
-#include "../CommonFunctions/IsImageFile.h"
-#include "../CommonFunctions/SanitizeFolderName.h"
-#include "../CommonFunctions/computeFileHash.h"
-#include "../CommonFunctions/getUniquePath.h"
-
-#include "../GetPhotosParameters/GetCameraName.h"
-
-
-namespace fs = std::filesystem;
-
-// Мьютекс для синхронизации вывода (если нужно логировать работу потоков)
-
-
-
+// Функция с основной реализацией сортировки по устройству
 void processFilesWithDevice(
     const std::vector<fs::path>& files,
     const fs::path& targetDirectory,
     std::unordered_map<std::string, int>& hashMap
 ) {
+    writeLog("Функция запущена");
     std::mutex coutMutex;
-    static std::mutex hashMapMutex; // Мьютекс для защиты hashMap
+    static std::mutex hashMapMutex; 
 
     for (const auto& filePath : files) {
         try {
-            // Считаем хеш файла
             std::string fileHash = computeFileHash(filePath);
 
             if (isImageFile(filePath)) {
-                // Является картинкой
+                // Является фотографией
                 std::string cameraName = GetCameraName(filePath.string());
 
                 if (cameraName != "NoExifData" && cameraName != "Error") {
                     // Имеет Exif данные
+                   
                     std::string sanitizedCameraName = sanitizeFolderName(cameraName);
 
                     fs::path newDir = targetDirectory / sanitizedCameraName;
@@ -43,25 +31,19 @@ void processFilesWithDevice(
                         if (hashMap.find(fileHash) != hashMap.end()) {
                             // Является дубликатом
                             int duplicateCount = hashMap[fileHash]++;
-                            fs::path duplicateDir = newDir / "Duplicates";  // Папка дубликатов внутри устройства
+                            fs::path duplicateDir = newDir / "Duplicates";  
                             fs::create_directories(duplicateDir);
 
                             fs::path newDuplicatePath = duplicateDir / (filePath.stem().string() + "_duplicated" +
                                 std::to_string(duplicateCount) + filePath.extension().string());
 
                             fs::rename(filePath, getUniquePath(newDuplicatePath));
-
-                            //std::lock_guard<std::mutex> coutLock(coutMutex);
-                            // std::cout << "Дубликат перемещен: " << filePath << " -> " << newDuplicatePath << std::endl;
                         }
                         else {
                             // Не является дубликатом
                             fs::path newPath = newDir / filePath.filename();
                             fs::rename(filePath, getUniquePath(newPath));
                             hashMap[fileHash] = 1;
-
-                            //std::lock_guard<std::mutex> coutLock(coutMutex);
-                            // std::cout << "Перемещено: " << filePath << " -> " << newPath << std::endl;
                         }
                     }
                 }
@@ -81,18 +63,12 @@ void processFilesWithDevice(
                                 std::to_string(duplicateCount) + filePath.extension().string());
 
                             fs::rename(filePath, getUniquePath(newDuplicatePath));
-
-                            //std::lock_guard<std::mutex> coutLock(coutMutex);
-                            // std::cout << "Дубликат без EXIF перемещен: " << filePath << " -> " << newDuplicatePath << std::endl;
                         }
                         else {
                             // Не является дубликатом
                             fs::path newPath = noExifDataDir / filePath.filename();
                             fs::rename(filePath, getUniquePath(newPath));
                             hashMap[fileHash] = 1;
-
-                            //std::lock_guard<std::mutex> coutLock(coutMutex);
-                            //std::cout << "Файл без EXIF данных перемещен: " << filePath << " -> " << newPath << std::endl;
                         }
                     }
                 }
@@ -101,7 +77,6 @@ void processFilesWithDevice(
                 // Не является фотографией
                 fs::path notPhotosDir = targetDirectory / "NotPhotos";
                 fs::create_directories(notPhotosDir);
-
                 {
                     std::lock_guard<std::mutex> lock(hashMapMutex);
                     if (hashMap.find(fileHash) != hashMap.end()) {
@@ -114,18 +89,12 @@ void processFilesWithDevice(
                             std::to_string(duplicateCount) + filePath.extension().string());
 
                         fs::rename(filePath, getUniquePath(newDuplicatePath));
-
-                        //std::lock_guard<std::mutex> coutLock(coutMutex);
-                        //std::cout << "Дубликат не фото перемещен: " << filePath << " -> " << newDuplicatePath << std::endl;
                     }
                     else {
                         // Не является дубликатом
                         fs::path newPath = notPhotosDir / filePath.filename();
                         fs::rename(filePath, getUniquePath(newPath));
                         hashMap[fileHash] = 1;
-
-                        //std::lock_guard<std::mutex> coutLock(coutMutex);
-                        //std::cout << "Не изображение перемещено: " << filePath << " -> " << newPath << std::endl;
                     }
                 }
             }
@@ -138,9 +107,9 @@ void processFilesWithDevice(
     }
 }
 
-
+// Функуия для параллельной сортировки по устройству
 void SortPhotosByGadgetNameParallel(const fs::path& directory, const fs::path& targetDirectory) {
-    std::unordered_map<std::string, int> fileHashes; // Карта для хранения хеш-сумм
+    std::unordered_map<std::string, int> fileHashes; 
 
     std::vector<fs::path> allFiles;
     for (const auto& entry : fs::recursive_directory_iterator(directory)) {
@@ -150,7 +119,7 @@ void SortPhotosByGadgetNameParallel(const fs::path& directory, const fs::path& t
     }
 
     size_t totalFiles = allFiles.size();
-    size_t chunkSize = (totalFiles + 3) / 4; // Разбиваем файлы на 4 части
+    size_t chunkSize = (totalFiles + 3) / 4;
     std::vector<std::thread> threads;
 
     for (size_t i = 0; i < 4; ++i) {
@@ -176,7 +145,7 @@ void SortPhotosByGadgetNameParallel(const fs::path& directory, const fs::path& t
     }
 }
 
-
+// Функция на будущее для оптимизации
 void SortPhotosByGadgetName(const fs::path& directory, const fs::path& targetDirectory) {
     try {
         for (const auto& entry : fs::directory_iterator(directory)) {

@@ -69,6 +69,7 @@
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>C:\Users\johnworker\Desktop\Проекты C++\sort your photos qt\libs\openssl-3.4.0\x64\lib;C:\Users\johnworker\Desktop\Проекты C++\sort your photos qt\libs\exiv2-0.28.3-2019msvc64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -110,7 +111,6 @@
   <ItemGroup>
     <ClCompile Include="frontend_sort_photo\loadingwidget.cpp" />
     <ClCompile Include="frontend_sort_photo\mainwindow.cpp" />
-    <ClCompile Include="frontend_sort_photo\sortingwidget.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ProgramFiles\CommonFunctions\clearAndOpen.cpp" />
     <ClCompile Include="ProgramFiles\CommonFunctions\computeFileHash.cpp" />
@@ -135,9 +135,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="frontend_sort_photo\mainwindow.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="frontend_sort_photo\sortingwidget.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ProgramFiles\CommonFunctions\clearAndOpen.h" />

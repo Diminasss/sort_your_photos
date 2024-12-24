@@ -1,6 +1,6 @@
 ﻿#include "GetYearOfPhoto.h"
 
-
+// Фнукция для получения года фотографии
 std::string GetYearOfPhoto(const std::string& imagePath) {
     try {
         std::unique_ptr<Exiv2::Image> image = Exiv2::ImageFactory::open(imagePath);
@@ -11,7 +11,6 @@ std::string GetYearOfPhoto(const std::string& imagePath) {
             return "NoYearData";
         }
 
-        // Проверяем наличие тега даты и времени съемки
         if (exifData.findKey(Exiv2::ExifKey("Exif.Photo.DateTimeOriginal")) != exifData.end()) {
             std::string dateTimeOriginal = exifData["Exif.Photo.DateTimeOriginal"].toString();
 
