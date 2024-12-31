@@ -117,13 +117,19 @@ void MainWindow::openLoadingWindow() {
         QMessageBox::warning(this, "Ошибка", "Пожалуйста, укажите пути к обеим папкам.");
         return;
     }
-    
-    std::filesystem::path sourceDirectory = std::filesystem::path(pathEdit1->text().toStdString());
-    std::filesystem::path targetDirectory = std::filesystem::path(pathEdit2->text().toStdString());
-    writeLog(pathEdit1->text() + "Источник");
-    writeLog(pathEdit2->text() + "Целевая");
+
+    // Получаем абсолютные пути с использованием QFileInfo для правильной кодировки
+    /*QString sanitizedSourcePath = QFileInfo(pathEdit1->text()).absoluteFilePath();
+    QString sanitizedTargetPath = QFileInfo(pathEdit2->text()).absoluteFilePath();*/
+    writeLog("Пути получены");
+
+    // Преобразуем пути в std::filesystem::path
+    std::filesystem::path sourceDirectory = pathEdit1->text().toStdWString();
+    std::filesystem::path targetDirectory = pathEdit2->text().toStdWString();
+    writeLog("Пути преобразованы в ютф 8");
 
     if (!loadingWidget) {
+        writeLog("Какое-то непонятное действие с tDir");
         loadingWidget = new LoadingWidget();
         QString tDir = pathEdit2->text();
         loadingWidget->setTargetFolderPath(tDir);  // Передаем путь к целевой папке
@@ -133,11 +139,22 @@ void MainWindow::openLoadingWindow() {
     loadingWidget->show();
     this->hide();
 
+    // Создаем QFutureWatcher для отслеживания завершения задачи
+    QFutureWatcher<void>* watcher = new QFutureWatcher<void>(this);
+
+    // Подключаем сигнал finished() от QFutureWatcher к слоту, который завершает обработку
+    connect(watcher, &QFutureWatcher<void>::finished, this, [&]() {
+        QMetaObject::invokeMethod(loadingWidget, [&]() {
+            loadingWidget->sortingFinished();  // Сообщаем, что сортировка завершена
+            });
+        });
+
     // Запускаем сортировку в отдельном потоке
-    QtConcurrent::run([this, sourceDirectory, targetDirectory]() {
+    QFuture<void> future = QtConcurrent::run([this, sourceDirectory, targetDirectory]() {
         if (sortByNameRadio->isChecked()) {
+            writeLog("Путь переден в SortPhohots");
             writeLog("Сортировка по названию телефона началась");
-            SortPhotosByGadgetNameParallel(sourceDirectory, targetDirectory);
+            SortPhotosByGadgetNameParallel(sourceDirectory, targetDirectory, this);
             writeLog("Сортировка по названию телефона завершена");
         }
         else if (sortByDateRadio->isChecked()) {
@@ -145,10 +162,7 @@ void MainWindow::openLoadingWindow() {
             SortByYearParallel(sourceDirectory, targetDirectory);
             writeLog("Сортировка по датам завершена");
         }
-
-        // По завершении сортировки переключаемся на главный поток
-        QMetaObject::invokeMethod(loadingWidget, [&]() {
-            loadingWidget->sortingFinished();  // Сообщаем, что сортировка завершена
-            });
-        });
+    });
+    // Устанавливаем наблюдатель для отслеживания завершения задачи
+    watcher->setFuture(future);
 }

@@ -8,6 +8,9 @@
 #include <string>
 #include <algorithm>
 
+#include <QWidget>
+#include <QMessageBox>
+
 #include "../GetPhotosParameters/GetCameraName.h"
 
 #include "../CommonFunctions/IsImageFile.h"
@@ -20,5 +23,4 @@
 
 namespace fs = std::filesystem;
 
-void SortPhotosByGadgetName(const fs::path& directory, const fs::path& targetDirectory);
-void SortPhotosByGadgetNameParallel(const fs::path& directory, const fs::path& targetDirectory);
+void SortPhotosByGadgetNameParallel(const fs::path& directory, const fs::path& targetDirectory, QWidget* parent);

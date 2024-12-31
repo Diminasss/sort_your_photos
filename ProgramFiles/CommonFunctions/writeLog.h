@@ -1,6 +1,8 @@
 #pragma once
 #include <QString>
 #include <QDebug>
+#include <QLoggingCategory>
+
 #include <fstream>
 #include <filesystem>
 

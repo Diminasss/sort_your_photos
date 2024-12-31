@@ -80,6 +80,17 @@
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Users\johnworker\Desktop\Проекты C++\sort your photos qt\libs\exiv2-0.28.3-2019msvc64\include;C:\Users\johnworker\Desktop\Проекты C++\sort your photos qt\libs\openssl-3.4.0\x64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\Users\johnworker\Desktop\Проекты C++\sort your photos qt\libs\exiv2-0.28.3-2019msvc64\lib;C:\Users\johnworker\Desktop\Проекты C++\sort your photos qt\libs\openssl-3.4.0\x64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>exiv2.lib;libcrypto.lib;libssl.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="Configuration">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
@@ -112,7 +123,6 @@
     <ClCompile Include="frontend_sort_photo\loadingwidget.cpp" />
     <ClCompile Include="frontend_sort_photo\mainwindow.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ProgramFiles\CommonFunctions\clearAndOpen.cpp" />
     <ClCompile Include="ProgramFiles\CommonFunctions\computeFileHash.cpp" />
     <ClCompile Include="ProgramFiles\CommonFunctions\getUniquePath.cpp" />
     <ClCompile Include="ProgramFiles\CommonFunctions\IsImageFile.cpp" />
@@ -137,7 +147,6 @@
     <QtMoc Include="frontend_sort_photo\mainwindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ProgramFiles\CommonFunctions\clearAndOpen.h" />
     <ClInclude Include="ProgramFiles\CommonFunctions\computeFileHash.h" />
     <ClInclude Include="ProgramFiles\CommonFunctions\getUniquePath.h" />
     <ClInclude Include="ProgramFiles\CommonFunctions\IsImageFile.h" />

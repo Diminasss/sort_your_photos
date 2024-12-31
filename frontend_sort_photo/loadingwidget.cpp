@@ -67,6 +67,7 @@ void LoadingWidget::onContinueButtonClicked() {
     emit nextWindowRequested();  
 }
 
+
 void LoadingWidget::sortingFinished() {
     writeLog("Метод SortingFinished");
     if (timer) {

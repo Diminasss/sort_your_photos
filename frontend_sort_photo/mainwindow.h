@@ -21,6 +21,7 @@
 #include <QLinearGradient>
 #include <QIcon>
 
+
 #include "loadingwidget.h"
 
 #include "../ProgramFiles/SortPhotosAlgorithms/SortByGadgetName.h"
@@ -28,6 +29,7 @@
 
 #include "../ProgramFiles/CommonFunctions/writeLog.h"
 #define writeLog(msg) writeLog(msg, __FILE__, __LINE__)
+
 
 class MainWindow : public QWidget {
     Q_OBJECT

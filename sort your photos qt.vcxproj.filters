@@ -91,9 +91,6 @@
     <ClCompile Include="ProgramFiles\CommonFunctions\writeLog.cpp">
       <Filter>Source Files\Program Files\CommonFunctions</Filter>
     </ClCompile>
-    <ClCompile Include="ProgramFiles\CommonFunctions\clearAndOpen.cpp">
-      <Filter>Source Files\Program Files\CommonFunctions</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="frontend_sort_photo\mainwindow.qrc">
@@ -142,9 +139,6 @@
       <Filter>Headers\Program Files\CommonFunctions</Filter>
     </ClInclude>
     <ClInclude Include="ProgramFiles\CommonFunctions\writeLog.h">
-      <Filter>Headers\Program Files\CommonFunctions</Filter>
-    </ClInclude>
-    <ClInclude Include="ProgramFiles\CommonFunctions\clearAndOpen.h">
       <Filter>Headers\Program Files\CommonFunctions</Filter>
     </ClInclude>
   </ItemGroup>

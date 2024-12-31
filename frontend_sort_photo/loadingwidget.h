@@ -15,6 +15,7 @@
 #include <QUrl>
 #include <QIcon>
 #include <QString>
+#include <QMessageBox>
 
 #include "../ProgramFiles/CommonFunctions/writeLog.h"
 #define writeLog(msg) writeLog(msg, __FILE__, __LINE__)
